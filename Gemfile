@@ -67,5 +67,6 @@ group :development do
   # gem "spring"
 
   gem 'annotate' # DB スキーマ定義をソースコードコメントとして記述してくれる.
+  gem 'letter_opener_web' # letter_opener の拡張. メール送信内容などを Web 上で参照可能にする.
 
 end
