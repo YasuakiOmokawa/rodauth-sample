@@ -33,5 +33,10 @@ module RodauthSample
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # メール送信元・ホスト
+    config.x.default_url_options.protocol = 'https'
+    config.x.default_url_options.host = 'senk-inc.co.jp'
+
   end
 end
