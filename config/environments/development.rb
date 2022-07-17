@@ -44,6 +44,8 @@ Rails.application.configure do
   # Use LetterOpenerWeb
   config.action_mailer.delivery_method = :letter_opener
 
+  config.action_mailer.default_url_options = config.x.default_url_options
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
