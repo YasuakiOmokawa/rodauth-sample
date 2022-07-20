@@ -102,6 +102,9 @@ class RodauthMain < Rodauth::Rails::Auth
       Rails.logger.info "👺 #{account[:email]} logged in!"
     end
 
+    # Redirect to after login
+    login_redirect "/dashboard"
+
     # Or only remember users that have ticked a "Remember Me" checkbox on login.
     # after_login { remember_login if param_or_nil("remember") }
 
