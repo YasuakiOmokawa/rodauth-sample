@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -61,4 +61,19 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Rodauth::Rails::ControllerMethods, type: :request
+
+
+  # request spec共通の前処理
+  # config.before(:each, type: :request) do
+
+  #   # let(:rspec_session) で指定された値を セッションの初期値とする
+  #   session = defined?(rspec_session) ? rspec_session : {}
+  #   # destroyメソッドを実行してもエラーにならないようにします
+  #   session.class_eval { def destroy; nil; end }
+  #   # 実行後のセッションを取得できるようにする
+  #   config.add_setting(:session, :default => session)
+  #   # Rodauthのログイン処理を実施できるように、sessionメソッドを上書きしてリクエストが実施される前にセッションを有効化する
+  #   allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(RSpec.configuration.session)
+  # end
 end
