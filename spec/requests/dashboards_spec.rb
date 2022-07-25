@@ -17,9 +17,10 @@ RSpec.describe DashboardsController, type: :request do
       private
 
       def login(account)
+        session[:account_id] = account.id
+        session[:authenticated_by] = ["password"] # or ["password", "totp"] for MFA
+        session
         binding.b
-        rodauth.scope.session[:account_id] = account.id
-        rodauth.scope.session[:authenticated_by] = ["password"] # or ["password", "totp"] for MFA
       end
 
       def logout

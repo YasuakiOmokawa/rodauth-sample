@@ -1,4 +1,4 @@
 example_id                                  | status | run_time             |
 ------------------------------------------- | ------ | -------------------- |
-./spec/requests/dashboards_spec.rb[1:1:1:1] | failed | 5 minutes 31 seconds |
+./spec/requests/dashboards_spec.rb[1:1:1:1] | failed | 5 minutes 38 seconds |
 ./spec/requests/dashboards_spec.rb[1:1:2:1] | passed | 0.12589 seconds      |
