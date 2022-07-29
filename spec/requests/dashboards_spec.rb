@@ -4,7 +4,6 @@ RSpec.describe DashboardsController, type: :request do
   describe "GET /show" do
     context 'ログインしている場合' do
       before do
-        get dashboard_path
         account = Account.create!(email: "user@example.com", password: "secret", status: "verified")
         login(account)
         get dashboard_path
@@ -17,14 +16,13 @@ RSpec.describe DashboardsController, type: :request do
       private
 
       def login(account)
-        session[:account_id] = account.id
-        session[:authenticated_by] = ["password"] # or ["password", "totp"] for MFA
-        session
+        RSpec.configuration.session[:account_id] = account.id
+        RSpec.configuration.session[:authenticated_by] = ["password"] # or ["password", "totp"] for MFA
         binding.b
       end
 
       def logout
-        session.clear
+        RSpec.configuration.session.clear
       end
     end
 
