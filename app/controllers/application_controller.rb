@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    rodauth.require_authentication unless rodauth.logged_in? # redirect to login page if not authenticated
+    rodauth.require_authentication # redirect to login page if not authenticated
   end
 end
