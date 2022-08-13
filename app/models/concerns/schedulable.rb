@@ -1,4 +1,6 @@
 module Schedulable
+  extend ActiveSupport::Concern
+
   def schedule
     @schedule ||= ::Schedule.new
   end
