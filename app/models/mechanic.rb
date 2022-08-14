@@ -1,4 +1,6 @@
 class Mechanic
+  include Schedulable
+
   def prepare_trip(trip)
     trip.bicycles.each do |bicycle|
       prepare_bicycle(bicycle)
@@ -11,5 +13,9 @@ class Mechanic
 
   def prepare_bicycle(bicycle)
     # ...
+  end
+
+  def lead_days
+    4
   end
 end
