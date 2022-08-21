@@ -6,7 +6,7 @@ class Bicycle
     @parts = args[:parts]
   end
 
-  attr_reader :size, :parts
+  attr_reader :size
 
   def lead_days
     1
@@ -15,4 +15,8 @@ class Bicycle
   def spares
     parts.spares
   end
+
+  private
+
+  attr_reader :parts
 end
