@@ -1,32 +1,13 @@
 class Parts
-  def initialize(args={})
-    @chain = args[:chain] || default_chain
-    @tire_size = args[:tire_size] || default_tire_size
-    post_initialize(args)
+  def initialize(parts)
+    @parts = parts
   end
-
-  attr_reader :chain, :tire_size
 
   def spares
-    {
-      tire_size: tire_size,
-      chain: chain
-    }.merge(local_spares)
+    parts.select { _1.needs_spare }
   end
 
-  def default_tire_size
-    raise NotImplementedError
-  end
+  private
 
-  def post_initialize(args)
-    nil
-  end
-
-  def local_spares
-    {}
-  end
-
-  def default_chain
-    '10-speed'
-  end
+  attr_reader :parts
 end
