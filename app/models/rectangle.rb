@@ -1,4 +1,4 @@
-class Rectangle
+class Rectangle < Shape
   attr_accessor :height, :width
 
   def calculate_area
