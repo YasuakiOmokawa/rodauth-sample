@@ -1,11 +1,7 @@
-class Square < Rectangle
-  def width=(width)
-    super(width)
-    @height = width
-  end
+class Square < Shape
+  attr_accessor :side_length
 
-  def height=(height)
-    super(height)
-    @width = height
+  def calculate_area
+    side_length * side_length
   end
 end
