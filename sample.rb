@@ -18,4 +18,6 @@ road_bike = Bicycle.new(
   parts: road_bike_parts
 )
 road_bike.size
-road_bike.spares
+p road_bike.spares.size
+p road_bike.parts.size
+
