@@ -1,6 +1,8 @@
 class Bicycle
   include Schedulable
 
+  attr_reader :parts
+
   def initialize(args={})
     @size = args[:size]
     @parts = args[:parts]
@@ -15,8 +17,4 @@ class Bicycle
   def spares
     parts.spares
   end
-
-  private
-
-  attr_reader :parts
 end
