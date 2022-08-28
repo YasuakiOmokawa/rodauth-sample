@@ -32,6 +32,6 @@ mountain_bike = Bicycle.new(
   parts: PartsFactory.build(mountain_config)
 )
 p mountain_bike.size
-p mountain_bike.spares
 p mountain_bike.spares.size
 p mountain_bike.parts.size
+p mountain_bike.spares
