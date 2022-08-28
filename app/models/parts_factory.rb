@@ -11,11 +11,12 @@ module PartsFactory
 
   private
 
+  MyStruct = Struct.new(:name, :description, :needs_spare)
   def create_part(part_config)
-    OpenStruct.new(
-      name: part_config[0],
-      description: part_config[1],
-      needs_spare: part_config.fetch(2, true)
+    MyStruct.new(
+      part_config[0],
+      part_config[1],
+      part_config.fetch(2, true)
     )
   end
 end
