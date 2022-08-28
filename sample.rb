@@ -25,8 +25,8 @@ p road_bike.parts.size
 
 mountain_config = [
   %w[chain 10-speed],
-  ['tire_size', '2.1'],
-  ['front_shock', 'Manitou', false],
+  %w[tire_size 2.1],
+  %w[front_shock Manitou false],
   %w[rear_shock Fox]
 ]
 mountain_bike = Bicycle.new(
