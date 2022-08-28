@@ -3,9 +3,7 @@ module PartsFactory
 
   def self.build(config, parts_class = Parts)
     parts_class.new(
-      config.collect {
-        create_part(_1)
-      }
+      config.collect { create_part(_1) }
     )
   end
 
