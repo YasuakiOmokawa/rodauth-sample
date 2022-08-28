@@ -1,4 +1,6 @@
 module PartsFactory
+  extend self
+
   def self.build(config, parts_class = Parts)
     parts_class.new(
       config.collect {
@@ -7,7 +9,9 @@ module PartsFactory
     )
   end
 
-  def self.create_part(part_config)
+  private
+
+  def create_part(part_config)
     OpenStruct.new(
       name: part_config[0],
       description: part_config[1],
