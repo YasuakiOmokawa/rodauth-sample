@@ -1,13 +1,17 @@
 module PartsFactory
-  def self.build(config, part_class = Part, parts_class = Parts)
+  def self.build(config, parts_class = Parts)
     parts_class.new(
       config.collect {
-        part_class.new(
-          name: _1[0],
-          description: _1[1],
-          needs_spare: _1.fetch(2, true)
-        )
+        create_part(_1)
       }
+    )
+  end
+
+  def self.create_part(part_config)
+    OpenStruct.new(
+      name: part_config[0],
+      description: part_config[1],
+      needs_spare: part_config.fetch(2, true)
     )
   end
 end
