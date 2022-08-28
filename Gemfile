@@ -74,4 +74,9 @@ group :development do
   gem 'annotate' # DB スキーマ定義をソースコードコメントとして記述してくれる.
   gem 'letter_opener_web' # letter_opener の拡張. メール送信内容などを Web 上で参照可能にする.
   gem 'rubocop', require: false # Ruby スタイルガイドに基づいた静的コードアナライザ.
+  gem 'rubocop-performance', require: false # rubocop の, 主にパフォーマンスに関する cop 定義.
+  gem 'rubocop-rails', ['!= 2.12.0', '!= 2.12.1'], require: false # Rails に関する rubocop の cop 定義.
+  gem 'rubocop-rspec', require: false # RSpec に関する rubocop の cop 定義.
+  gem 'rubocop-rubycw', require: false # Ruby の警告に関する cop 定義
+  gem 'rubocop-thread_safety', require: false # スレッドセーフか確認する cop 定義
 end
