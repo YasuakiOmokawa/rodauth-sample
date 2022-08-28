@@ -21,3 +21,17 @@ road_bike.size
 p road_bike.spares.size
 p road_bike.parts.size
 
+mountain_config = [
+  ['chain', '10-speed'],
+  ['tire_size', '2.1'],
+  ['front_shock', 'Manitou', false],
+  ['rear_shock', 'Fox'],
+]
+mountain_bike = Bicycle.new(
+  size: 'M',
+  parts: PartsFactory.build(mountain_config)
+)
+p mountain_bike.size
+p mountain_bike.spares
+p mountain_bike.spares.size
+p mountain_bike.parts.size
