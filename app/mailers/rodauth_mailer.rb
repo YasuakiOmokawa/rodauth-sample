@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RodauthMailer < ApplicationMailer
   def verify_account(name = nil, account_id, key)
     @email_link = email_link(name, :verify_account, account_id, key)

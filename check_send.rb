@@ -1,5 +1,7 @@
-"ruby".send(:sub,/./,"R") #=> "Ruby"
+# frozen_string_literal: true
+
+'ruby'.send(:sub, /./, 'R') #=> "Ruby"
 def detect_method
-  return :sub,/./,"R"
+  [:sub, /./, 'R']
 end
-"ruby".send(*detect_method) #=> "Ruby"
+'ruby'.send(*detect_method) #=> "Ruby"

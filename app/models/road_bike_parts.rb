@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoadBikeParts < Parts
   def post_initialize(args)
     @tape_color = args[:tape_color]
@@ -5,7 +7,7 @@ class RoadBikeParts < Parts
 
   def local_spares
     {
-      tape_color: tape_color
+      tape_color:
     }
   end
 

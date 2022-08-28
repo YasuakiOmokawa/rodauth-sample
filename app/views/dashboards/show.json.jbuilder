@@ -1,1 +1,3 @@
-json.partial! "dashboards/dashboard", dashboard: @dashboard
+# frozen_string_literal: true
+
+json.partial! 'dashboards/dashboard', dashboard: @dashboard

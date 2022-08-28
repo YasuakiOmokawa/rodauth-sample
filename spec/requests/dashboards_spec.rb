@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe DashboardsController, type: :request do
-  describe "GET /show" do
+  describe 'GET /show' do
     context 'ログインしている場合' do
       before do
-        account = Account.create!(email: "user@example.com", password: "secret", status: "verified")
+        account = Account.create!(email: 'user@example.com', password: 'secret', status: 'verified')
         login(account)
         get dashboard_path
       end
@@ -17,7 +19,7 @@ RSpec.describe DashboardsController, type: :request do
 
       def login(account)
         RSpec.configuration.session[:account_id] = account.id
-        RSpec.configuration.session[:authenticated_by] = ["password"] # or ["password", "totp"] for MFA
+        RSpec.configuration.session[:authenticated_by] = ['password'] # or ["password", "totp"] for MFA
         binding.b
       end
 

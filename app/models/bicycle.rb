@@ -1,14 +1,14 @@
+# frozen_string_literal: true
+
 class Bicycle
   include Schedulable
 
-  attr_reader :parts
+  attr_reader :parts, :size
 
-  def initialize(args={})
+  def initialize(args = {})
     @size = args[:size]
     @parts = args[:parts]
   end
-
-  attr_reader :size
 
   def lead_days
     1

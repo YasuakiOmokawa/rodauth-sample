@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Parts
   extend Forwardable
   def_delegators :parts, :size, :each
@@ -8,7 +10,7 @@ class Parts
   end
 
   def spares
-    parts.select { _1.needs_spare }
+    select(&:needs_spare)
   end
 
   private
