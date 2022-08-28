@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 road_bike = Bicycle.new(
   size: 'L',
   parts: RoadBikeParts.new(tape_color: 'red')
@@ -22,10 +24,10 @@ p road_bike.spares.size
 p road_bike.parts.size
 
 mountain_config = [
-  ['chain', '10-speed'],
+  %w[chain 10-speed],
   ['tire_size', '2.1'],
   ['front_shock', 'Manitou', false],
-  ['rear_shock', 'Fox'],
+  %w[rear_shock Fox]
 ]
 mountain_bike = Bicycle.new(
   size: 'M',

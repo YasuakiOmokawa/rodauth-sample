@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RodauthApp < Rodauth::Rails::App
   # primary configuration
   configure RodauthMain

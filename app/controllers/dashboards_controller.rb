@@ -1,6 +1,6 @@
-class DashboardsController < ApplicationController
+# frozen_string_literal: true
 
+class DashboardsController < ApplicationController
   # GET /dashboard
-  def show
-  end
+  def show; end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MountainBikeParts < Parts
   def post_initialize(args)
     @front_shock = args[:front_shock]
@@ -6,7 +8,7 @@ class MountainBikeParts < Parts
 
   def local_spares
     {
-      rear_shock: rear_shock
+      rear_shock:
     }
   end
 

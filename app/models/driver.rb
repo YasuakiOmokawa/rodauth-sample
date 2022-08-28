@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Driver
   def prepare_trip(trip)
     vehicle = trip.vehicle
@@ -6,10 +8,10 @@ class Driver
   end
 
   def gas_up(vehicle)
-    #...
+    # ...
   end
 
   def fill_water_tank(vehicle)
-    #...
+    # ...
   end
 end

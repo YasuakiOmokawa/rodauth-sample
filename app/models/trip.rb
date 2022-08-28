@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Trip
   attr_reader :bicycles, :customers, :vehicle
 

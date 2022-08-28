@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Square < Shape
   attr_accessor :side_length
 
