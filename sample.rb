@@ -49,3 +49,13 @@ p human.walk # => '歩く'
 p human.eat # => '食べる'
 # 人間が飛ぶのはおかしい
 p human.fly # => '飛ぶ'
+
+# webから登録しようとしたとき
+form = Web::UserForm.new(name: nil, age: 20)
+p form.valid? # => false
+valid_form = Web::UserForm.new(name: 'user_name', age: 20)
+p valid_form.valid? # => false
+
+# 管理画面から登録しようとしたとき
+form = Admin::UserForm.new(name: 'user_name', age: nil)
+p form.valid? # => false
