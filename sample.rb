@@ -37,3 +37,25 @@ p mountain_bike.size
 p mountain_bike.spares.size
 p mountain_bike.parts.size
 p mountain_bike.spares
+
+# インタフェース分離の法則
+bird = Bird.new
+p bird.cry # => '鳴く'
+p bird.eat # => '食べる'
+p bird.fly # => '飛ぶ'
+
+human = Human.new
+p human.walk # => '歩く'
+p human.eat # => '食べる'
+# 人間が飛ぶのはおかしい
+p human.fly # => '飛ぶ'
+
+# webから登録しようとしたとき
+form = Web::UserForm.new(name: nil, age: 20)
+p form.valid? # => false
+valid_form = Web::UserForm.new(name: 'user_name', age: 20)
+p valid_form.valid? # => false
+
+# 管理画面から登録しようとしたとき
+form = Admin::UserForm.new(name: 'user_name', age: nil)
+p form.valid? # => false
