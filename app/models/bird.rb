@@ -4,5 +4,8 @@ class Bird < Animal
   def cry
     puts '鳴く'
   end
-end
 
+  def fly
+    puts '飛ぶ'
+  end
+end
