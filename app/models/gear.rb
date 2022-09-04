@@ -11,6 +11,10 @@ class Gear
     (ratio * wheel.width).round(1)
   end
 
+  def set_cog(new_cog)
+    @cog = new_cog
+    changed
+  end
   private
 
   attr_reader :chainring, :cog, :wheel
