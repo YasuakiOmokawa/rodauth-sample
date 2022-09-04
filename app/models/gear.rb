@@ -28,4 +28,8 @@ class Gear
   def ratio
     chainring / cog.to_f
   end
+
+  def changed
+    observer.changed(chainring, cog)
+  end
 end
