@@ -15,6 +15,12 @@ class Gear
     @cog = new_cog
     changed
   end
+
+  def set_chainring(new_chainring)
+    @chainring = new_chainring
+    changed
+  end
+
   private
 
   attr_reader :chainring, :cog, :wheel
