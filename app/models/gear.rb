@@ -23,7 +23,7 @@ class Gear
 
   private
 
-  attr_reader :chainring, :cog, :wheel
+  attr_reader :chainring, :cog, :wheel, :observer
 
   def ratio
     chainring / cog.to_f
