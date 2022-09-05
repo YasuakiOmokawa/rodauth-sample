@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Gear
-  def initialize(chainring:, cog:, wheel:)
+  def initialize(chainring:, cog:, wheel:, observer:)
     @chainring = chainring
     @cog = cog
     @wheel = wheel
+    @observer = observer
   end
 
   def gear_inches
