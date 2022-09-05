@@ -11,4 +11,13 @@ RSpec.describe Gear, type: :model do
       expect(gear.gear_inches).to eq 47.3
     end
   end
+
+  describe '#set_cog' do
+    it 'call :changed and set new cog' do
+      observer_mock = double('Observer')
+      expect(observer_mock).to receive(:changed).with(52, 27)
+      gear = Gear.new(chainring: 52, cog: 11, wheel: nil, observer: observer_mock)
+      gear.set_cog(27)
+    end
+  end
 end
