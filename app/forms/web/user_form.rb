@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-class Web::UserForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
+module Web
+  class UserForm
+    include ActiveModel::Model
+    include ActiveModel::Attributes
 
-  attribute :name, :string
-  attribute :age, :integer
+    attribute :name, :string
+    attribute :age, :integer
 
-  validates :name, presence: true
+    validates :name, presence: true
+  end
 end
