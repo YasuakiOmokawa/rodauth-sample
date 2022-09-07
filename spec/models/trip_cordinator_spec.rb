@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Mechanic, type: :model do
-  let(:preparer) { Mechanic.new }
+RSpec.describe TripCordinator, type: :model do
+  let(:preparer) { TripCordinator.new }
 
   it_behaves_like 'preparer'
 end
