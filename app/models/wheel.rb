@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Wheel
+  include Diameterizable
+
   attr_reader :rim, :tire
 
   def initialize(rim, tire)
