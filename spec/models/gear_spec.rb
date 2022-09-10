@@ -8,7 +8,9 @@ RSpec.describe Gear, type: :model do
 
     let(:gear) { Gear.new(chainring: 11, cog: 10, wheel:, observer: nil) }
     let(:wheel) { double('Wheel', width: 30) }
+    let(:diameterizable) { wheel }
 
+    it_behaves_like 'Diameterizable'
     it { is_expected.to be_within(0.01).of(33.0) }
   end
 
