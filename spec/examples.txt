@@ -1,10 +1,9 @@
 example_id                                     | status  | run_time        |
 ---------------------------------------------- | ------- | --------------- |
 ./spec/helpers/posts_helper_spec.rb[1:1]       | pending | 0.00024 seconds |
-./spec/models/gear_spec.rb[1:1:1:1]            | passed  | 0.00205 seconds |
-./spec/models/gear_spec.rb[1:1:2]              | passed  | 0.00261 seconds |
-./spec/models/gear_spec.rb[1:2:1]              | passed  | 0.00109 seconds |
-./spec/models/gear_spec.rb[1:3:1]              | passed  | 0.03009 seconds |
+./spec/models/gear_spec.rb[1:1:1]              | passed  | 0.00378 seconds |
+./spec/models/gear_spec.rb[1:2:1]              | passed  | 0.00096 seconds |
+./spec/models/gear_spec.rb[1:3:1]              | passed  | 0.03237 seconds |
 ./spec/models/mechanic_spec.rb[1:1:1]          | passed  | 0.00105 seconds |
 ./spec/models/post_spec.rb[1:1]                | pending | 0.00003 seconds |
 ./spec/models/trip_cordinator_spec.rb[1:1:1]   | passed  | 0.01178 seconds |
