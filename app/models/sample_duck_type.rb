@@ -4,19 +4,19 @@ class SampleDuckType
   # 不可: このぐらいなら継承を使わずに書きたい
   class Animal
     # 抽象メソッド
-    def speak
+    def speak(self)
     end
   end
 
   # スーパークラスを継承
-  class Duck < Animal
+  class Duck
     def speak
       puts 'Quack! Quack'
     end
   end
 
   # スーパークラスを継承
-  class Dog < Animal
+  class Dog
     def speak
       puts 'Bau! Bau!'
     end
