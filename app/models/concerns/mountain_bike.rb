@@ -6,7 +6,7 @@ module MountainBike
   def price
     case type_code
     when :rigid
-      (1 + commission) * base_price
+      raise 'never get here'
     when :front_suspension
       (1 + commission) * base_price + front_suspension_price
     when :full_suspension
