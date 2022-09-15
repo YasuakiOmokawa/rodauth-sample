@@ -9,6 +9,10 @@ class RigidMountainBike
     @commission = commission
   end
 
+  def price
+    (1 + commission) * base_price
+  end
+
   private
 
   attr_reader :type_code, :base_price, :commission
