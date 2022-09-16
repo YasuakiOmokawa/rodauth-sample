@@ -10,7 +10,7 @@ module MountainBike
     when :front_suspension
       raise 'never get here2'
     when :full_suspension
-      (1 + commission) * base_price + front_suspension_price + rear_suspension_price
+      raise 'never get here3'
     end
   end
 end
