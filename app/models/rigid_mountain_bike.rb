@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 class RigidMountainBike
+  include MountainBike
 
-  def initialize(type_code:, base_price:, commission:)
+  ::TIRE_WIDTH_FACTOR = 10
+
+  def initialize(type_code:, base_price:, commission:, tire_width:)
     @type_code = type_code
     @base_price = base_price
     @commission = commission
+    @tire_width = tire_width
   end
 
   def price
@@ -14,5 +18,5 @@ class RigidMountainBike
 
   private
 
-  attr_reader :type_code, :base_price, :commission
+  attr_reader :type_code, :base_price, :commission, :tire_width
 end
