@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RigidMountainBike
-  include MountainBike
+  # include MountainBike
 
   ::TIRE_WIDTH_FACTOR = 10
 
