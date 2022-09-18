@@ -16,6 +16,10 @@ class RigidMountainBike
     (1 + commission) * base_price
   end
 
+  def off_road_ability
+    tire_width * TIRE_WIDTH_FACTOR
+  end
+
   private
 
   attr_reader :type_code, :base_price, :commission, :tire_width
