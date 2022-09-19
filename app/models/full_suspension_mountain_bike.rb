@@ -6,8 +6,7 @@ class FullSuspensionMountainBike
   FRONT_SUSPENSION_FACTOR = 20
   REAR_SUSPENSION_FACTOR = 30
 
-  def initialize(type_code:, base_price:, commission:, tire_width:, front_fork_travel:, rear_fork_travel:)
-    @type_code = type_code
+  def initialize(base_price:, commission:, tire_width:, front_fork_travel:, rear_fork_travel:)
     @base_price = base_price
     @commission = commission
     @tire_width = tire_width
@@ -33,5 +32,5 @@ class FullSuspensionMountainBike
     100
   end
 
-  attr_reader :type_code, :base_price, :commission, :tire_width, :front_fork_travel, :rear_fork_travel
+  attr_reader :base_price, :commission, :tire_width, :front_fork_travel, :rear_fork_travel
 end
