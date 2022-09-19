@@ -5,10 +5,11 @@ class FrontSuspensionMountainBike
   TIRE_WIDTH_FACTOR = 10
   FRONT_SUSPENSION_FACTOR = 20
 
-  def initialize(base_price:, commission:, **opts)
+  def initialize(base_price:, commission:, tire_width:, front_fork_travel:)
     @base_price = base_price
     @commission = commission
-    opts.each {|k,v| instance_variable_set "@#{k}", v }
+    @tire_width = tire_width
+    @front_fork_travel = front_fork_travel
   end
 
   def price
@@ -25,5 +26,5 @@ class FrontSuspensionMountainBike
     100
   end
 
-  attr_reader :base_price, :commission, :front_fork_travel, :tire_width
+  attr_reader :base_price, :commission, :tire_width, :front_fork_travel
 end
