@@ -3,7 +3,7 @@
 class RigidMountainBike
   # include MountainBike
 
-  ::TIRE_WIDTH_FACTOR = 10
+  TIRE_WIDTH_FACTOR = 10
 
   def initialize(base_price:, commission:, tire_width:)
     @base_price = base_price
