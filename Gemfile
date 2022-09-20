@@ -54,6 +54,7 @@ gem 'bootsnap', require: false
 
 # 認証機能
 gem 'rodauth-rails', '~> 1.0'
+gem 'nokogiri' # HTMLパーサー(HTMLレポートの解析に使う)
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

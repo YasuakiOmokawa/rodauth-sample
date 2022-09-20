@@ -293,6 +293,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener_web
+  nokogiri
   puma (~> 5.0)
   rails (~> 7.0.3)
   rodauth-rails (~> 1.0)
