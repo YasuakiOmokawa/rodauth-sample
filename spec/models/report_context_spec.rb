@@ -15,5 +15,13 @@ RSpec.describe ReportContext, type: :model do
         expect(parsed_data.at_css('title').text).to eq '月次報告'
       end
     end
+
+    context 'PlainTextFormatter' do
+      let(:formatter) { PlainTextFormatter.new }
+
+      it 'titleが正しいこと' do
+        expect(report_context.output_report).to include '月次報告'
+      end
+    end
   end
 end
