@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MountainBike
+  attr_reader :type_code
 
   TIRE_WITH_FACTOR = 10
   FRONT_SUSPENSION_FACTOR = 20
@@ -10,32 +11,36 @@ class MountainBike
     set_state_from_hash(params)
   end
 
+  def type_code=(value)
+    @type_code = value
+  end
+
   def add_front_suspension(params)
-    @type_code = :front_suspension
+    self.type_code = :front_suspension
     set_state_from_hash(params)
   end
 
   def add_rear_suspension(params)
-    unless @type_code == :front_suspension
+    unless type_code == :front_suspension
       raise 'You can\'t add rear suspension unless you have front suspension'
     end
-    @type_code = :full_suspension
+    self.type_code = :full_suspension
     set_state_from_hash(params)
   end
 
   def off_road_ability
     result = @tire_width * TIRE_WITH_FACTOR
-    if @type_code == :front_suspension || @type_code == :full_suspension
+    if type_code == :front_suspension || type_code == :full_suspension
       result += @front_fork_travel * FRONT_SUSPENSION_FACTOR
     end
-    if @type_code == :full_suspension
+    if type_code == :full_suspension
       result += @rear_fork_travel * REAR_SUSPENSION_FACTOR
     end
     result
   end
 
   def price
-    case @type_code
+    case type_code
     when :rigid
       (1 + @commission) * @base_price
     when :front_suspension
@@ -67,6 +72,6 @@ class MountainBike
     if hash.has_key?(:rear_fork_travel)
       @rear_fork_travel = hash[:rear_fork_travel]
     end
-    @type_code = hash[:type_code] if hash.has_key?(:type_code)
+    self.type_code = hash[:type_code] if hash.has_key?(:type_code)
   end
 end
