@@ -14,6 +14,11 @@ module StrategyPattern
 
     def type_code=(value)
       @type_code = value
+      @bike_type = case type_code
+      when :rigid: RigidMountainBike.new
+      when :front_suspension: FrontSuspensionMountainBike.new
+      when :full_suspension: FullSuspensionMountainBike.new
+      end
     end
 
     def add_front_suspension(params)
@@ -76,4 +81,4 @@ module StrategyPattern
       self.type_code = hash[:type_code] if hash.has_key?(:type_code)
     end
   end
-end 
+end
