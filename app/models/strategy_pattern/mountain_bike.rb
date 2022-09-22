@@ -2,6 +2,9 @@
 
 module StrategyPattern
   class MountainBike
+    extend Forwardable
+    def_delegators :@bike_type, :off_road_ability
+
     attr_reader :type_code
 
     TIRE_WITH_FACTOR = 10
