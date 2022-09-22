@@ -15,9 +15,9 @@ module StrategyPattern
     def type_code=(value)
       @type_code = value
       @bike_type = case type_code
-      when :rigid: RigidMountainBike.new
-      when :front_suspension: FrontSuspensionMountainBike.new
-      when :full_suspension: FullSuspensionMountainBike.new
+      when :rigid then StrategyPattern::RigidMountainBike.new(tire_width: @tire_width)
+      when :front_suspension then StrategyPattern::FrontSuspensionMountainBike.new
+      when :full_suspension then StrategyPattern::FullSuspensionMountainBike.new
       end
     end
 
