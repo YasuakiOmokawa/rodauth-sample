@@ -36,6 +36,11 @@ module StrategyPattern
         raise 'You can\'t add rear suspension unless you have front suspension'
       end
       self.type_code = :full_suspension
+      @bike_type = StrategyPattern::FullSuspensionMountainBike.new(
+        {
+          tire_width: @tire_width,
+          front_fork_travel: @front_fork_travel
+        }.merge(params))
       set_state_from_hash(params)
     end
 
