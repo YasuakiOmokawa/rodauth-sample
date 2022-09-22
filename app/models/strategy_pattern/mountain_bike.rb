@@ -17,7 +17,7 @@ module StrategyPattern
       @bike_type = case type_code
       when :rigid then StrategyPattern::RigidMountainBike.new(tire_width: @tire_width)
       when :front_suspension then StrategyPattern::FrontSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel)
-      when :full_suspension then StrategyPattern::FullSuspensionMountainBike.new
+      when :full_suspension then StrategyPattern::FullSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel, rear_fork_travel: @rear_fork_travel)
       end
     end
 
