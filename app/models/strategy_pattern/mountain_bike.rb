@@ -3,7 +3,7 @@
 module StrategyPattern
   class MountainBike
     extend Forwardable
-    def_delegators :@bike_type, :off_road_ability
+    def_delegators :@bike_type, :off_road_ability, :price
 
     attr_reader :type_code
 
