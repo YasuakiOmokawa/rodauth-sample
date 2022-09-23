@@ -18,9 +18,9 @@ module StrategyPattern
     def type_code=(value)
       @type_code = value
       @bike_type = case type_code
-      when :rigid then StrategyPattern::RigidMountainBike.new(tire_width: @tire_width)
-      when :front_suspension then StrategyPattern::FrontSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel)
-      when :full_suspension then StrategyPattern::FullSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel, rear_fork_travel: @rear_fork_travel)
+      when :rigid then StrategyPattern::RigidMountainBike.new(tire_width: @tire_width, base_price: @base_price, commission: @commission)
+      when :front_suspension then StrategyPattern::FrontSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel, front_suspension_price: @front_suspension_price, base_price: @base_price, commission: @commission)
+      when :full_suspension then StrategyPattern::FullSuspensionMountainBike.new(tire_width: @tire_width, front_fork_travel: @front_fork_travel, rear_fork_travel: @rear_fork_travel, rear_suspension_price: @rear_suspension_price, front_suspension_price: @front_suspension_price, base_price: @base_price, commission: @commission)
       end
     end
 
