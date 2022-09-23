@@ -15,5 +15,8 @@ module StrategyPattern
       @rear_fork_travel * StrategyPattern::MountainBike::REAR_SUSPENSION_FACTOR
     end
 
+    def price
+      (1 + @commission) * @base_price + @front_suspension_price + @rear_suspension_price
+    end
   end
 end
