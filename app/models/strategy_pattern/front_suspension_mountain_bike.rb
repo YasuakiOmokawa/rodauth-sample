@@ -6,6 +6,9 @@ module StrategyPattern
     def initialize(params)
       @front_fork_travel = params[:front_fork_travel]
       @tire_width = params[:tire_width]
+      @front_suspension_price = params[:front_suspension_price]
+      @base_price = params[:base_price]
+      @commission = params[:commission]
     end
 
     def off_road_ability
