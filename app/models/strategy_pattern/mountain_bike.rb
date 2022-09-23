@@ -43,19 +43,6 @@ module StrategyPattern
           base_price: @bike_type.base_price,
           commission: @bike_type.commission
         }.merge(params))
-      set_state_from_hash(params)
-    end
-
-
-    def price
-      case type_code
-      when :rigid
-        (1 + @commission) * @base_price
-      when :front_suspension
-        (1 + @commission) * @base_price + @front_suspension_price
-      when :full_suspension
-        (1 + @commission) * @base_price + @front_suspension_price + @rear_suspension_price
-      end
     end
 
     private
