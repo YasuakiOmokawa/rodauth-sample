@@ -25,10 +25,11 @@ module StrategyPattern
     end
 
     def add_front_suspension(params)
-      self.type_code = :front_suspension
-      @bike_type = StrategyPattern::FrontSuspensionMountainBike.new(
-        {tire_width: @tire_width}.merge(params))
-      set_state_from_hash(params)
+      @bike_type = StrategyPattern::FrontSuspensionMountainBike.new({
+        tire_width: @bike_type.tire_width,
+        base_price: @bike_type.base_price,
+        commission: @bike_type.commission
+      }.merge(params))
     end
 
     def add_rear_suspension(params)
