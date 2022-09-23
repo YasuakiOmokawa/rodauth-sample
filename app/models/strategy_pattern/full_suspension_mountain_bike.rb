@@ -4,8 +4,12 @@ module StrategyPattern
   class FullSuspensionMountainBike
 
     def initialize(params)
-      @tire_width = params[:tire_width]
       @front_fork_travel = params[:front_fork_travel]
+      @tire_width = params[:tire_width]
+      @front_suspension_price = params[:front_suspension_price]
+      @rear_suspension_price = params[:rear_suspension_price]
+      @base_price = params[:base_price]
+      @commission = params[:commission]
       @rear_fork_travel = params[:rear_fork_travel]
     end
 
