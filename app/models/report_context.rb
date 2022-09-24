@@ -5,7 +5,7 @@ class ReportContext
 
   def initialize(formatter)
     @title = '月次報告'
-    @text = %w(good! soso normal)
+    @text = %w[good! soso normal]
     @formatter = formatter
   end
 

@@ -2,5 +2,4 @@
 
 module MountainBike
   extend ActiveSupport::Concern
-
 end
