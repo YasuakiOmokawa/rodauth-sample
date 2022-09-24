@@ -2,7 +2,6 @@
 
 module StrategyPattern
   class RigidMountainBike
-
     def initialize(params)
       @tire_width = params[:tire_width]
       @base_price = params[:base_price]

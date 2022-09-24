@@ -3,7 +3,7 @@
 class PlainTextFormatter
   def output_report(context)
     result = "*** #{context.title} ***\n"
-    context.text.each do |line|
+    context.text.each do |_line|
       result += "line\n"
     end
     result

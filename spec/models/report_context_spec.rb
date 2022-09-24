@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ReportContext, type: :model do
   describe '#output_report' do
-    let(:report_context) { build(:report_context, formatter: formatter) }
+    let(:report_context) { build(:report_context, formatter:) }
 
     context 'HtmlFormatter' do
       let(:formatter) { HtmlFormatter.new }
