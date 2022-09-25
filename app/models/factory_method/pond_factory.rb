@@ -2,19 +2,17 @@
 
 module FactoryMethod
   class PondFactory
-    def initialize(number_animals:, number_plants:, animal_class: FactoryMethod::Duck,
-                   plant_class: FactoryMethod::WaterLily)
-      @animal_class = animal_class
-      @plant_class = plant_class
+    def initialize(number_animals:, number_plants:, organism_factory:)
+      @organism_factory = organism_factory
 
       @animals = []
       number_animals.times do |i|
-        add_animal(animal_class.new("動物#{i}"))
+        add_animal(organism_factory.build_animal("動物#{i}"))
       end
 
       @plants = []
       number_plants.times do |i|
-        add_plants(plant_class.new("植物#{i}"))
+        add_plants(organism_factory.build_plant("植物#{i}"))
       end
     end
 
@@ -35,6 +33,6 @@ module FactoryMethod
       @plants << plant
     end
 
-    attr_reader :animal_class, :plant_class
+    attr_reader :organism_factory
   end
 end
