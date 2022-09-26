@@ -2,12 +2,17 @@
 
 module FactoryMethod
   class PondOrganismFactory
+    def initialize(animal_class:, plant_class:)
+      @animal_class = animal_class
+      @plant_class = plant_class
+    end
+
     def build_animal(name)
-      FactoryMethod::Duck.new(name)
+      @animal_class.new(name)
     end
 
     def build_plant(name)
-      FactoryMethod::WaterLily.new(name)
+      @plant_class.new(name)
     end
   end
 end
