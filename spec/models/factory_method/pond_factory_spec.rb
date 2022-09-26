@@ -7,7 +7,7 @@ RSpec.describe FactoryMethod::PondFactory, type: :model do
 
   describe '#simulate_one_day' do
     context 'PondOrganismFactory' do
-      let(:organism_factory) { FactoryMethod::PondOrganismFactory.new }
+      let(:organism_factory) { FactoryMethod::PondOrganismFactory.new(animal_class: FactoryMethod::Duck, plant_class: FactoryMethod::WaterLily) }
 
       specify do
         expect(pond_factory.simulate_one_day).to eq [
