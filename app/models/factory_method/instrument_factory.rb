@@ -4,7 +4,7 @@ module FactoryMethod
   class InstrumentFactory
     def initialize(number_saxophones)
       @saxophones = []
-      number_saxophones.times.do |i|
+      number_saxophones.times do |i|
         add_saxophone(FactoryMethod::Saxophone.new("Saxphone #{i}"))
       end
     end
