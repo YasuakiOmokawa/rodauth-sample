@@ -2,16 +2,16 @@
 
 module FactoryMethod
   class InstrumentFactory
-    def initialize(number_saxophones)
-      @saxophones = []
-      number_saxophones.times do |i|
-        add_saxophone(FactoryMethod::Saxophone.new("Saxphone #{i}"))
+    def initialize(number_instruments)
+      @instruments = []
+      number_instruments.times do |i|
+        add_instrument(build_instrument("Instrument #{i}"))
       end
     end
 
     def ship_out
-      @tmp = @saxophones.dup
-      empty_saxophone
+      @tmp = @instruments.dup
+      empty_instrument
       @tmp
     end
 
@@ -19,12 +19,12 @@ module FactoryMethod
 
     attr_reader :name
 
-    def add_saxophone(saxophone)
-      @saxophones << saxophone
+    def add_instrument(instrument)
+      @instruments << instrument
     end
 
-    def empty_saxophone
-      @saxophones = []
+    def empty_instrument
+      @instruments = []
     end
   end
 end
