@@ -3,13 +3,10 @@
 module Transaction
   class BasicApplicationModel
     include ::ActiveModel::Model
-    # include ::ActiveModel::Validations::Callbacks
+    include ::ActiveModel::Validations::Callbacks
 
-    attr_accessor :id, :name, :omg
+    define_model_callbacks :save
 
-    def initialize(attributes={})
-      super
-      @omg ||= true
-    end
+    before_validation :normalize # ::ActiveModel::Validations::Callbacksで定義
   end
 end
