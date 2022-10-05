@@ -4,6 +4,8 @@ module Transaction
   class BasicApplicationModel
     include ::ActiveModel::Model
     include ::ActiveModel::Validations::Callbacks
+    include ::ActiveModel::Attributes
+    include ::ActiveRecord::Transactions
 
     define_model_callbacks :save # ActiveModel::Model -> ActiveModel::API -> ActiveModel::Validations -> ActiveModel::Callbacks#define_model_callbacks
 
