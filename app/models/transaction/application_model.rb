@@ -2,6 +2,7 @@
 
 module Transaction
   class ApplicationModel < BasicApplicationModel
-    aaaa
+    include DelegateAttribute
+
   end
 end
