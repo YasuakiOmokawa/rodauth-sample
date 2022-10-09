@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# ApplicationModel
+#
+# ActiveRecordオブジェクトならびにそれに準じたモデルをラップして統一した操作を提供します。
+# 例えば以下のケースに利用します。
+#
 module Transaction
   class ApplicationModel < BasicApplicationModel
     include DelegateAttribute
