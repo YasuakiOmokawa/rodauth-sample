@@ -8,6 +8,8 @@ module Transaction
     define_model_callbacks :update
     define_model_callbacks :destroy
 
+    validate :validate_models
+
     def initialize(attributes = {})
       super(attributes)
       @models = []
