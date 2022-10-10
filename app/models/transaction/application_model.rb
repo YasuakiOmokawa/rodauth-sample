@@ -26,6 +26,10 @@ module Transaction
       run_callbacks(:commit) { save_in_transaction }.present?
     end
 
+    def save!
+      save || raise(ActiveRecord::RecordNotSaved.new('Failed to save the form', self))
+    end
+
     private
 
     attr_reader :models
