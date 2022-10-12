@@ -30,6 +30,42 @@ module Transaction
       save || raise(ActiveRecord::RecordNotSaved.new('Failed to save the form', self))
     end
 
+    def create(attributes = {})
+      run_callbacks(:create) do
+        assign_attributes(attributes)
+        save
+      end
+    end
+
+    def create!(attributes = {})
+      run_callbacks(:create) do
+        assign_attributes(attributes)
+        save!
+      end
+    end
+
+    def update(attributes = {})
+      run_callbacks(:update) do
+        assign_attributes(attributes)
+        save
+      end
+    end
+
+    def update!(attributes = {})
+      run_callbacks(:update) do
+        assign_attributes(attributes)
+        save!
+      end
+    end
+
+    def destroy
+      run_callbacks(:commit) { destroy_in_transaction }.present?
+    end
+
+    def destroy!
+      destroy || raise(ActiveRecord::RecordNotDestroyed.new('Failed to destroy the form', self))
+    end
+
     private
 
     attr_reader :models
@@ -37,7 +73,7 @@ module Transaction
     def save_in_transaction
       result = ::ActiveRecord::Base.transaction do
         result = run_callbacks(:save) { save_models }
-        raise ActiveRecord::Rollback if result
+        raise ActiveRecord::Rollback unless result
 
         true
       end
@@ -48,6 +84,28 @@ module Transaction
 
     def save_models
       models.to_a.map(&:save!)
+    end
+
+    def destroy_in_transaction
+      result = ::ActiveRecord::Base.transaction do
+        result = run_callbacks(:destroy) { models.to_a.all?(&:destroy) }
+        raise ActiveRecord::Rollback unless result
+
+        true
+      end
+      models.to_a.each { promote_errors(_1) } unless result
+      result.present?
+    rescue StandardError => e
+      handle_rollback(e)
+    end
+
+    def promote_errors(model)
+      model.errors.each { |error| errors.add(error.attribute, error.message) }
+    end
+
+    def handle_rollback(error)
+      run_callbacks :rollback
+      raise error
     end
   end
 end
