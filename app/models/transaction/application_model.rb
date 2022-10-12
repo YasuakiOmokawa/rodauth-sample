@@ -73,7 +73,7 @@ module Transaction
     def save_in_transaction
       result = ::ActiveRecord::Base.transaction do
         result = run_callbacks(:save) { save_models }
-        raise ActiveRecord::Rollback if result
+        raise ActiveRecord::Rollback unless result
 
         true
       end
