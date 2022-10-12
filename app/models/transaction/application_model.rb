@@ -30,6 +30,42 @@ module Transaction
       save || raise(ActiveRecord::RecordNotSaved.new('Failed to save the form', self))
     end
 
+    def create(attributes = {})
+      run_callbacks(:create) do
+        assign_attributes(attributes)
+        save
+      end
+    end
+
+    def create!(attributes = {})
+      run_callbacks(:create) do
+        assign_attributes(attributes)
+        save!
+      end
+    end
+
+    def update(attributes = {})
+      run_callbacks(:update) do
+        assign_attributes(attributes)
+        save
+      end
+    end
+
+    def update!(attributes = {})
+      run_callbacks(:update) do
+        assign_attributes(attributes)
+        save!
+      end
+    end
+
+    def destroy
+      run_callbacks(:commit) { destroy_in_transaction }.present?
+    end
+
+    def destroy!
+      destroy || raise(ActiveRecord::RecordNotDestroyed.new('Failed to destroy the form', self))
+    end
+
     private
 
     attr_reader :models
