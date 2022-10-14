@@ -99,6 +99,10 @@ module Transaction
       handle_rollback(e)
     end
 
+    def validate_models
+      models.to_a.select(&:invalid?).each { |model| promote_errors(model) }
+    end
+
     def promote_errors(model)
       model.errors.each { |error| errors.add(error.attribute, error.message) }
     end
