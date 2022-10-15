@@ -2,8 +2,13 @@
 
 # ApplicationModel
 #
-# ActiveRecordオブジェクトならびにそれに準じたモデルをラップして統一した操作を提供します。
-# 例えば以下のケースに利用します。
+# ActiveRecordオブジェクトならびにそれに準じたモデルをラップして統一した操作を提供する。
+# 例えば以下のケースに利用する。
+#
+# 1. 文脈を限定したコールバック
+# 特定のモデルで save する前後に callback を定義すればスマートに処理を書けるが、ActiveRecord モデルに
+# 直接 callback を記述するとテストデータ作成時に不要なコールバック処理が実行されてしまい不便。
+# ApplicationModel を継承したクラスのなかでコールバックを記述すれば ActiveRecord モデル自体を汚さずに済む。
 #
 module Transaction
   class ApplicationModel < BasicApplicationModel
