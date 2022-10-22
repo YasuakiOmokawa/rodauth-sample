@@ -17,10 +17,11 @@ module Transaction
     attr_reader :options
 
     def fetch_option_or_default(type)
-      if (option == fetch_option(type))
+      if (option = fetch_option(type))
         option.quantity
       else
-        master_data[type]
+        'from_master_plan'
+        # master_data[type]
       end
     end
 
