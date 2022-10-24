@@ -2,26 +2,27 @@
 
 module Transaction
   class UpdatingContext < ApplicationModel
-    attribute :api, :boolean
+    attribute :api_client, :boolean
 
-    def initialize(options)
+    def initialize(options, master_plan)
       @options = options
+      @master_plan = master_plan
 
       super(
-        api: fetch_option_or_default(:api)
+        api_client: fetch_option_or_default(:api_client),
+        sms_contract: fetch_option_or_default(:sms_contract)
       )
     end
 
     private
 
-    attr_reader :options
+    attr_reader :options, :master_plan
 
     def fetch_option_or_default(type)
       if (option = fetch_option(type))
         option.quantity
       else
-        'from_master_plan'
-        # master_data[type]
+        master_plan[type]
       end
     end
 

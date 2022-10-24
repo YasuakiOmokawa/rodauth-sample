@@ -53,6 +53,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # 認証機能
+gem 'active_hash' # ActiveRecord に似たモデルの読み取り専用データソースを提供する
 gem 'nokogiri' # HTMLパーサー(HTMLレポートの解析に使う)
 gem 'rodauth-rails', '~> 1.0'
 
