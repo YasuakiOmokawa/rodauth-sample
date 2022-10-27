@@ -97,8 +97,8 @@
   workflow: true
 - id: 3
   name: Light
-  description: '3: Light（2020年7月以前）'
-  plan_code: light_before202007
+  description: '3: Light'
+  plan_code: light
   acceptable: true
   api_client: false
   api_google: true
