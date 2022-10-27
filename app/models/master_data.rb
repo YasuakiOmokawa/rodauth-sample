@@ -5,6 +5,6 @@ class MasterData < ActiveYaml::Base
     super
 
     klass.include ActiveHash::Associations
-    klass.set_root_path('db', 'fixtures')
+    klass.set_root_path Rails.root.join('db', 'fixtures')
   end
 end

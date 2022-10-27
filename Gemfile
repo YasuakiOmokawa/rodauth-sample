@@ -52,10 +52,10 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# 認証機能
 gem 'active_hash' # ActiveRecord に似たモデルの読み取り専用データソースを提供する
+gem 'enumerize' # ActiveModel で列挙型と i18n 提供
 gem 'nokogiri' # HTMLパーサー(HTMLレポートの解析に使う)
-gem 'rodauth-rails', '~> 1.0'
+gem 'rodauth-rails', '~> 1.0' # 認証機能
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
