@@ -8,7 +8,7 @@ RSpec.describe Transaction::UpdatingContext, type: :model do
   describe '#attributes' do
     subject { context.attributes }
 
-    let(:master_plan) {}
+    let(:master_plan) { build(:plan) }
 
     context 'with options' do
       let(:options) do
