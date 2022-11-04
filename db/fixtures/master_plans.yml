@@ -4,6 +4,8 @@
   description: '1: 無料'
   plan_code: free
   api_client: false
+  max_paper_upload_count: 5
+  max_paper_upload_count_unlimited: false
 - id: 2
   name: Pro
   description: '2: Pro'
