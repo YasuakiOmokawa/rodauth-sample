@@ -12,8 +12,14 @@ class MasterPlan < MasterData
   ]
 
   class << self
+    delegate :boolean_column_names, to: :first
+
     def default
       find(DEFAULT_ID)
     end
+  end
+
+  def boolean_column_names
+    attributes.select { |_, value| value.in?([true, false]) }.keys.sort
   end
 end
