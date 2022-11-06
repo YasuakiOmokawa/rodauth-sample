@@ -8,7 +8,7 @@ RSpec.describe Transaction::UpdatingContext, type: :model do
   describe '#attributes' do
     subject { context.attributes }
 
-    let(:master_plan) { build(:plan) }
+    let(:master_plan) { build(:plan) } # trait指定なしの場合は無料プラン
 
     context 'with options' do
       let(:options) do

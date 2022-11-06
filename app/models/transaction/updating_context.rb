@@ -3,6 +3,7 @@
 module Transaction
   class UpdatingContext < ApplicationModel
     attribute :api_client, :boolean
+    # attribute :max_paper_upload_count_unlimited, :boolean
 
     def initialize(options, master_plan)
       @options = options
