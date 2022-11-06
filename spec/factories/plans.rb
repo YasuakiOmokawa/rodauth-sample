@@ -12,8 +12,9 @@ FactoryBot.define do
         name { master_plan.description }
         caption { master_plan.description }
 
-        # [*MasterPlan.]
-
+        [*MasterPlan.boolean_column_names, *MasterPlan.integer_column_names].each do |column_name|
+          send(column_name) { master_plan.public_send(column_name) }
+        end
       end
     end
   end
