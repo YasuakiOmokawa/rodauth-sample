@@ -22,7 +22,7 @@ RSpec.describe Transaction::UpdatingContext, type: :model do
       it 'optionsが反映されること' do
         is_expected.to eq({
           api_client: true,
-          sms_contract: false
+          max_paper_upload_count_unlimited: false
         }.stringify_keys)
       end
     end
