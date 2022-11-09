@@ -3,7 +3,7 @@
 module Transaction
   class UpdatingContext < ApplicationModel
     attribute :api_client, :boolean
-    # attribute :max_paper_upload_count_unlimited, :boolean
+    attribute :max_paper_upload_count_unlimited, :boolean
 
     def initialize(options, master_plan)
       @options = options
@@ -11,7 +11,7 @@ module Transaction
 
       super(
         api_client: fetch_option_or_default(:api_client),
-        sms_contract: fetch_option_or_default(:sms_contract)
+        max_paper_upload_count_unlimited: fetch_option_or_default(:max_paper_upload_count_unlimited)
       )
     end
 
