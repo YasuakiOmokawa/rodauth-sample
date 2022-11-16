@@ -22,7 +22,8 @@ RSpec.describe Transaction::UpdatingContext, type: :model do
       it 'optionsが反映されること' do
         is_expected.to eq({
           api_client: true,
-          max_paper_upload_count_unlimited: false
+          max_paper_upload_count_unlimited: false,
+          max_paper_upload_count: 5
         }.stringify_keys)
       end
     end
