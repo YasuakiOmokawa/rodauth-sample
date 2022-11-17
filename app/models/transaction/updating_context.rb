@@ -24,6 +24,7 @@ module Transaction
     def fetch_max_paper_upload_count
       [
         master_plan.max_paper_upload_count,
+        fetch_option(:max_paper_upload_count_900)&.quantity.to_i * 900,
       ].sum
     end
 
