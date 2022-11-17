@@ -17,7 +17,7 @@ example_id                                                      | status  | run_
 ./spec/models/post_spec.rb[1:1]                                 | pending | 0.00003 seconds |
 ./spec/models/report_context_spec.rb[1:1:1:1]                   | passed  | 0.02894 seconds |
 ./spec/models/report_context_spec.rb[1:1:2:1]                   | passed  | 0.00356 seconds |
-./spec/models/transaction/updating_context_spec.rb[1:1:1:1]     | passed  | 0.04666 seconds |
+./spec/models/transaction/updating_context_spec.rb[1:1:1:1]     | passed  | 0.05389 seconds |
 ./spec/models/trip_cordinator_spec.rb[1:1:1]                    | passed  | 0.01178 seconds |
 ./spec/models/wheel_spec.rb[1:1:1]                              | passed  | 0.00087 seconds |
 ./spec/requests/dashboards_spec.rb[1:1:1:1]                     | failed  | 0.03844 seconds |
