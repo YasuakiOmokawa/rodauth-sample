@@ -13,13 +13,20 @@ module Transaction
       super(
         api_client: fetch_option_or_default(:api_client),
         max_paper_upload_count_unlimited: fetch_option_or_default(:max_paper_upload_count_unlimited),
-        max_paper_upload_count: fetch_option_or_default(:max_paper_upload_count)
+        max_paper_upload_count: fetch_max_paper_upload_count
       )
     end
 
     private
 
     attr_reader :options, :master_plan
+
+    def fetch_max_paper_upload_count
+      [
+        master_plan.max_paper_upload_count,
+        fetch_option(:max_paper_upload_count_900)&.quantity.to_i * 900,
+      ].sum
+    end
 
     def fetch_option_or_default(type)
       if (option = fetch_option(type))
