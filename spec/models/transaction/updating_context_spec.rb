@@ -16,7 +16,7 @@ RSpec.describe Transaction::UpdatingContext, type: :model do
         [
           Transaction::Option.new(**defaults.merge(option_type: 'api_client')),
           Transaction::Option.new(**defaults.merge(option_type: 'pdf_upload_count', quantity: 10)),
-          Transaction::Option.new(**defaults.merge(option_type: 'max_paper_upload_count_900', quantity: 1)),
+          Transaction::Option.new(**defaults.merge(option_type: 'max_paper_upload_count_900', quantity: 1))
         ]
       end
 
