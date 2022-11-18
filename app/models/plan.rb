@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Plan < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :master_plan
