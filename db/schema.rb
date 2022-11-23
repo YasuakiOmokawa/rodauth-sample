@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_030_073_209) do
+ActiveRecord::Schema[7.0].define(version: 20_221_121_084_142) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_030_073_209) do
   create_table 'account_password_reset_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.datetime 'deadline', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'account_remember_keys', force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_030_073_209) do
 
   create_table 'account_verification_keys', force: :cascade do |t|
     t.string 'key', null: false
-    t.datetime 'requested_at', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'requested_at', default: -> { 'CURRENT_TIMESTAMP' }, null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'accounts', force: :cascade do |t|
@@ -57,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 20_221_030_073_209) do
   create_table 'posts', force: :cascade do |t|
     t.string 'title'
     t.text 'body'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
+
+  create_table 'sub_options', force: :cascade do |t|
+    t.string 'option_type', null: false
+    t.integer 'quantity', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
