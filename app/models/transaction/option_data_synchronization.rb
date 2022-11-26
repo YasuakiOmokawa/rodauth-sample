@@ -14,7 +14,7 @@ module Transaction
 
     def update_and_destroy_sub_option
       sub_options.each do |sub_option|
-        if (option = options.find { _1.license_type == sub_option.option_type })
+        if (option = options.find { _1.option_type == sub_option.option_type })
           sub_option.assign_attributes(
             quantity: option.quantity
           )
