@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SubOption < ApplicationRecord
+  belongs_to :company
 end
 
 # == Schema Information

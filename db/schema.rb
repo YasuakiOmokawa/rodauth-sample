@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_126_034_613) do
+ActiveRecord::Schema[7.0].define(version: 20_221_127_035_013) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_126_034_613) do
   create_table 'account_password_reset_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.datetime 'deadline', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'account_remember_keys', force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_126_034_613) do
 
   create_table 'account_verification_keys', force: :cascade do |t|
     t.string 'key', null: false
-    t.datetime 'requested_at', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'requested_at', default: -> { 'CURRENT_TIMESTAMP' }, null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'accounts', force: :cascade do |t|
@@ -48,6 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_126_034_613) do
     t.string 'address', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'sub_option_id'
+    t.index ['sub_option_id'], name: 'index_companies_on_sub_option_id'
   end
 
   create_table 'plans', force: :cascade do |t|
@@ -79,4 +81,5 @@ ActiveRecord::Schema[7.0].define(version: 20_221_126_034_613) do
   add_foreign_key 'account_password_reset_keys', 'accounts', column: 'id'
   add_foreign_key 'account_remember_keys', 'accounts', column: 'id'
   add_foreign_key 'account_verification_keys', 'accounts', column: 'id'
+  add_foreign_key 'companies', 'sub_options'
 end
