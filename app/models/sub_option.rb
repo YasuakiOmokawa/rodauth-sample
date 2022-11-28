@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class SubOption < ApplicationRecord
+  OPTION_TYPES = %w[
+    api_client
+    max_paper_upload_count
+    max_paper_upload_count_unlimited
+  ].freeze
+
   belongs_to :company
 end
 
