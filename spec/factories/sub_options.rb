@@ -2,6 +2,9 @@
 
 FactoryBot.define do
   factory :sub_option do
+    company
+    option_type { SubOption::OPTION_TYPES.sample }
+    quantity { 0 }
   end
 end
 
