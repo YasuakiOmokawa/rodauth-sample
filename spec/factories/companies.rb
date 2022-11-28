@@ -2,6 +2,9 @@
 
 FactoryBot.define do
   factory :company do
+    name { FFaker::CompanyJA.name }
+    address { FFaker::AddressJA.address }
+    sub_option
   end
 end
 
