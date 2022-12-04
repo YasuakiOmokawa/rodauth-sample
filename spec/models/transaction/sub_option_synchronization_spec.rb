@@ -17,8 +17,8 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
         allow(client).to receive(:sub_options).and_return(
           [
             option_class.new(quantity: 1, option_type: 'api_client'),
-            option_class.new(quantity: 1, option_type: 'max_paper_upload_count'),
-          ],
+            option_class.new(quantity: 1, option_type: 'max_paper_upload_count')
+          ]
         )
       end
 
