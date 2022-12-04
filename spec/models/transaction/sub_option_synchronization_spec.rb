@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Transaction::SubOptionSynchronization, type: :model do
-  subject(:syncronization) { described_class.new() }
+  subject(:syncronization) { described_class.new(company) }
 
   describe '#create!' do
     subject(:create!) { syncronization.create! }
