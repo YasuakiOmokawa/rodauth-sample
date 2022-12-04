@@ -2,11 +2,16 @@
 
 module Transaction
   class SubOptionSynchronization < ApplicationModel
-    def initialize
+    def initialize(company)
+      @company = company
       super({})
     end
 
     private
+
+    attr_reader :company
+
+    delegate :sub_options, to: :company, private: true
 
     def normalize
       update_and_destroy_sub_option

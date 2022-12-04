@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Transaction::SubOptionSynchronization, type: :model do
-  subject(:syncronization) { described_class.new() }
+  subject(:syncronization) { described_class.new(company) }
 
   describe '#create!' do
     subject(:create!) { syncronization.create! }
@@ -17,8 +17,8 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
         allow(client).to receive(:sub_options).and_return(
           [
             option_class.new(quantity: 1, option_type: 'api_client'),
-            option_class.new(quantity: 1, option_type: 'max_paper_upload_count'),
-          ],
+            option_class.new(quantity: 1, option_type: 'max_paper_upload_count')
+          ]
         )
       end
 
@@ -30,7 +30,7 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
 
       context '同期対象である場合' do
         it 'オプションの情報が同期される' do
-
+          expect { create! }.to change { company.reload.sub_options.size }
         end
       end
     end
