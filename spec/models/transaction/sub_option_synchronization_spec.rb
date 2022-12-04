@@ -30,7 +30,7 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
 
       context '同期対象である場合' do
         it 'オプションの情報が同期される' do
-
+          expect { create! }.to change { company.reload.sub_options.size }
         end
       end
     end
