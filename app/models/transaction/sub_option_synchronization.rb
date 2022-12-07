@@ -2,14 +2,16 @@
 
 module Transaction
   class SubOptionSynchronization < ApplicationModel
-    def initialize(company)
+    def initialize(company, client)
       @company = company
+      @client = client
       super({})
+      @models << company
     end
 
     private
 
-    attr_reader :company
+    attr_reader :company, :client
 
     delegate :sub_options, to: :company, private: true
 
@@ -20,9 +22,9 @@ module Transaction
 
     def update_and_destroy_sub_option
       sub_options.each do |sub_option|
-        if (option = options.find { _1.option_type == sub_option.option_type })
+        if (option = api_sub_options.find { _1.option_type == sub_option.option_type })
           sub_option.assign_attributes(
-            quantity: option.quantity
+            quantity: api_sub_options.quantity
           )
         else
           sub_option.mark_for_destruction
@@ -41,6 +43,8 @@ module Transaction
       end
     end
 
-    def api_sub_options; end
+    def api_sub_options
+      @api_sub_options = client.sub_options
+    end
   end
 end
