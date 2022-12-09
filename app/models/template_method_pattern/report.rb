@@ -14,6 +14,10 @@ module TemplateMethodPattern
       output_end
     end
 
+    private
+
+    attr_reader :title, :text
+
     def output_body
       text.each do |line|
         output_line(line)
@@ -35,9 +39,5 @@ module TemplateMethodPattern
     def output_body_end; end
 
     def output_end; end
-
-    private
-
-    attr_reader :title, :text
   end
 end
