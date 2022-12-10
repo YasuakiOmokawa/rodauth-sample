@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module TemplateMethodPattern
   class PlainTextReport < Report
-
     private
 
     def output_start; end
