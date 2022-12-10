@@ -2,6 +2,7 @@
 
 class Company < ApplicationRecord
   has_many :sub_options, dependent: :destroy, autosave: true
+  has_many :subscriptions, dependent: :destroy
 end
 
 # == Schema Information

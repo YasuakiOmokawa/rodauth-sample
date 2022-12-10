@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TemplateMethodPattern
   class Report
     def initialize

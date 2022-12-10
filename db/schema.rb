@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_202_064_854) do
+ActiveRecord::Schema[7.0].define(version: 20_221_210_020_029) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -77,9 +77,17 @@ ActiveRecord::Schema[7.0].define(version: 20_221_202_064_854) do
     t.index ['company_id'], name: 'index_sub_options_on_company_id'
   end
 
+  create_table 'subscriptions', force: :cascade do |t|
+    t.integer 'company_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['company_id'], name: 'index_subscriptions_on_company_id'
+  end
+
   add_foreign_key 'account_login_change_keys', 'accounts', column: 'id'
   add_foreign_key 'account_password_reset_keys', 'accounts', column: 'id'
   add_foreign_key 'account_remember_keys', 'accounts', column: 'id'
   add_foreign_key 'account_verification_keys', 'accounts', column: 'id'
   add_foreign_key 'sub_options', 'companies'
+  add_foreign_key 'subscriptions', 'companies'
 end
