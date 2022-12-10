@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :subscription do
-    company { nil }
+    company
   end
 end
 

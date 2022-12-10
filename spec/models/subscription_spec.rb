@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Subscription, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '関連付け確認' do
+    let(:subscription) { create(:subscription) }
+
+    it 'companyが紐づくこと' do
+      expect(subscription.company).to be_present
+    end
+  end
 end
 
 # == Schema Information
