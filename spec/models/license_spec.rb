@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe License, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '関連付け確認' do
+    let(:license) { create(:license) }
+
+    it 'companyが紐づくこと' do
+      expect(license.subscription).to be_present
+    end
+  end
 end
 
 # == Schema Information

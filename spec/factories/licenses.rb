@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :license do
-    subscription { nil }
+    subscription
     next_payment_date { 1.year.from_now.to_date }
   end
 end
