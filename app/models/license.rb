@@ -9,7 +9,7 @@ end
 # Table name: licenses
 #
 #  id                :integer          not null, primary key
-#  next_payment_date :datetime         not null
+#  next_payment_date :date             not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  subscription_id   :integer          not null

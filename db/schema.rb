@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_212_031_725) do
     t.integer 'subscription_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.datetime 'next_payment_date', null: false
+    t.date 'next_payment_date', null: false
     t.index ['subscription_id'], name: 'index_licenses_on_subscription_id'
   end
 
