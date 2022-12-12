@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_030830) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_031725) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_030830) do
     t.integer "subscription_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "next_payment_date", null: false
     t.index ["subscription_id"], name: "index_licenses_on_subscription_id"
   end
 

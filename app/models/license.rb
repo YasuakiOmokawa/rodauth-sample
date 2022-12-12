@@ -6,10 +6,11 @@ end
 #
 # Table name: licenses
 #
-#  id              :integer          not null, primary key
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  subscription_id :integer          not null
+#  id                :integer          not null, primary key
+#  next_payment_date :datetime         not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  subscription_id   :integer          not null
 #
 # Indexes
 #
