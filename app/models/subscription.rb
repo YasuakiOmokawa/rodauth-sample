@@ -2,6 +2,8 @@
 
 class Subscription < ApplicationRecord
   belongs_to :company
+
+  has_many :licenses, dependent: :destroy
 end
 
 # == Schema Information

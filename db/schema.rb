@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_210_020_029) do
+ActiveRecord::Schema[7.0].define(version: 20_221_212_031_725) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -48,6 +48,14 @@ ActiveRecord::Schema[7.0].define(version: 20_221_210_020_029) do
     t.string 'address', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'licenses', force: :cascade do |t|
+    t.integer 'subscription_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.date 'next_payment_date', null: false
+    t.index ['subscription_id'], name: 'index_licenses_on_subscription_id'
   end
 
   create_table 'plans', force: :cascade do |t|
@@ -88,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_210_020_029) do
   add_foreign_key 'account_password_reset_keys', 'accounts', column: 'id'
   add_foreign_key 'account_remember_keys', 'accounts', column: 'id'
   add_foreign_key 'account_verification_keys', 'accounts', column: 'id'
+  add_foreign_key 'licenses', 'subscriptions'
   add_foreign_key 'sub_options', 'companies'
   add_foreign_key 'subscriptions', 'companies'
 end
