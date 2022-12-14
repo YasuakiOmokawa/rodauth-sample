@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_212_031_725) do
+ActiveRecord::Schema[7.0].define(version: 20_221_214_045_304) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -41,6 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 20_221_212_031_725) do
     t.string 'email', null: false
     t.string 'password_hash'
     t.index ['email'], name: 'index_accounts_on_email', unique: true, where: 'status IN (1, 2)'
+  end
+
+  create_table 'base_licenses', force: :cascade do |t|
+    t.string 'plan_code', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   create_table 'companies', force: :cascade do |t|
