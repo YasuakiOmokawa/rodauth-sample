@@ -2,6 +2,8 @@
 
 class License < ApplicationRecord
   belongs_to :subscription
+
+  delegated_type :licensable, types: %w[BaseLicense], dependent: :destroy
 end
 
 # == Schema Information
