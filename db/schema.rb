@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_214_045_304) do
+ActiveRecord::Schema[7.0].define(version: 20_221_216_075_252) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_214_045_304) do
   create_table 'account_password_reset_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.datetime 'deadline', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'account_remember_keys', force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_214_045_304) do
 
   create_table 'account_verification_keys', force: :cascade do |t|
     t.string 'key', null: false
-    t.datetime 'requested_at', null: false
-    t.datetime 'email_last_sent', null: false
+    t.datetime 'requested_at', default: -> { 'CURRENT_TIMESTAMP' }, null: false
+    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
   end
 
   create_table 'accounts', force: :cascade do |t|
@@ -61,6 +61,9 @@ ActiveRecord::Schema[7.0].define(version: 20_221_214_045_304) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.date 'next_payment_date', null: false
+    t.string 'licensable_type'
+    t.bigint 'licensable_id'
+    t.index %w[licensable_type licensable_id], name: 'index_polymorphic_key_licenses', unique: true
     t.index ['subscription_id'], name: 'index_licenses_on_subscription_id'
   end
 
