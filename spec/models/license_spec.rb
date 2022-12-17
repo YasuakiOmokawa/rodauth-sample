@@ -4,10 +4,32 @@ require 'rails_helper'
 
 RSpec.describe License, type: :model do
   describe '関連付け確認' do
-    let(:license) { create(:license) }
+    context 'has_one' do
+      let!(:license) { create(:license) }
 
-    it 'companyが紐づくこと' do
-      expect(license.subscription).to be_present
+      it 'companyが紐づくこと' do
+        expect(license.subscription).to be_present
+      end
+    end
+
+    context 'delegated_type' do
+      let!(:license) { create(:license) }
+
+      context 'base_licenseがdestroyされた場合' do
+        before { license.base_license.destroy! }
+
+        it 'licenseも消えること' do
+          expect(License.all).to be_empty
+        end
+      end
+
+      context 'licenseがdestroyされた場合' do
+        before { license.destroy! }
+
+        it 'base_licenseも消えること' do
+          expect(BaseLicense.all).to be_empty
+        end
+      end
     end
   end
 end

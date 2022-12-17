@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_216_075_252) do
   create_table 'account_password_reset_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.datetime 'deadline', null: false
-    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
+    t.datetime 'email_last_sent', null: false
   end
 
   create_table 'account_remember_keys', force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 20_221_216_075_252) do
 
   create_table 'account_verification_keys', force: :cascade do |t|
     t.string 'key', null: false
-    t.datetime 'requested_at', default: -> { 'CURRENT_TIMESTAMP' }, null: false
-    t.datetime 'email_last_sent', default: -> { 'CURRENT_TIMESTAMP' }, null: false
+    t.datetime 'requested_at', null: false
+    t.datetime 'email_last_sent', null: false
   end
 
   create_table 'accounts', force: :cascade do |t|
