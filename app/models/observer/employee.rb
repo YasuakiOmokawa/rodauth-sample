@@ -8,13 +8,23 @@ module Observer
       @name = name
       @title = title
       @salary = salary
-      @observers = [Payroll.new]
+      @observers = []
     end
 
     def salary=(new_salary)
       @salary = new_salary
       notify_observer
     end
+
+    def add_observer(observer)
+      @observers << observer
+    end
+
+    def delete_observer(observer)
+      @observers.delete observer
+    end
+
+    private
 
     def notify_observer
       @observers.each do |observer|
