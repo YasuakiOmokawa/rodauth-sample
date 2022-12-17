@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module StrategyPattern
-  class TextFormatter < Formatter
+  class TextFormatter
     def output_report(context)
       puts("**#{context.title}**")
       context.text.each do |line|
