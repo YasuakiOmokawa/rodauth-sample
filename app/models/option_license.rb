@@ -1,4 +1,5 @@
 class OptionLicense < ApplicationRecord
+  include Licensable
 end
 
 # == Schema Information
