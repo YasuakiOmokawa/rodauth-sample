@@ -1,0 +1,2 @@
+class OptionLicense < ApplicationRecord
+end
