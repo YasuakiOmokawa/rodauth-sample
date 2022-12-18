@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_216_075_252) do
+ActiveRecord::Schema[7.0].define(version: 20_221_218_055_543) do
   create_table 'account_login_change_keys', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'login', null: false
@@ -65,6 +65,13 @@ ActiveRecord::Schema[7.0].define(version: 20_221_216_075_252) do
     t.bigint 'licensable_id'
     t.index %w[licensable_type licensable_id], name: 'index_polymorphic_key_licenses', unique: true
     t.index ['subscription_id'], name: 'index_licenses_on_subscription_id'
+  end
+
+  create_table 'option_licenses', force: :cascade do |t|
+    t.string 'license_type', null: false
+    t.integer 'quantity', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   create_table 'plans', force: :cascade do |t|
