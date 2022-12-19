@@ -3,7 +3,7 @@
 class License < ApplicationRecord
   belongs_to :subscription
 
-  delegated_type :licensable, types: %w[BaseLicense], dependent: :destroy
+  delegated_type :licensable, types: %w[BaseLicense OptionLicense], dependent: :destroy
 end
 
 # == Schema Information

@@ -13,21 +13,45 @@ RSpec.describe License, type: :model do
     end
 
     context 'delegated_type' do
-      let!(:license) { create(:license) }
+      let!(:license) { create(:license, licensable:) }
 
-      context 'base_licenseがdestroyされた場合' do
-        before { license.base_license.destroy! }
+      context 'base_license' do
+        let!(:licensable) { create(:base_license) }
 
-        it 'licenseも消えること' do
-          expect(License.all).to be_empty
+        context 'destroyされた場合' do
+          before { license.base_license.destroy! }
+
+          it 'licenseも消えること' do
+            expect(License.all).to be_empty
+          end
+        end
+
+        context 'licenseがdestroyされた場合' do
+          before { license.destroy! }
+
+          it '委譲先も消えること' do
+            expect(BaseLicense.all).to be_empty
+          end
         end
       end
 
-      context 'licenseがdestroyされた場合' do
-        before { license.destroy! }
+      context 'option_license' do
+        let!(:licensable) { create(:option_license) }
 
-        it 'base_licenseも消えること' do
-          expect(BaseLicense.all).to be_empty
+        context 'destroyされた場合' do
+          before { license.option_license.destroy! }
+
+          it 'licenseも消えること' do
+            expect(License.all).to be_empty
+          end
+        end
+
+        context 'licenseがdestroyされた場合' do
+          before { license.destroy! }
+
+          it '委譲先も消えること' do
+            expect(OptionLicense.all).to be_empty
+          end
         end
       end
     end
