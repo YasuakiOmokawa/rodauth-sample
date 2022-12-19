@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :option_license do
+    license_type { SubOption::OPTION_TYPES.sample }
+    quantity { 0 }
   end
 end
 
