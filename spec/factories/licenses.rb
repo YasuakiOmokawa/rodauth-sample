@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :license do
     subscription
     next_payment_date { 1.year.from_now.to_date }
-    licensable { build(%i[base_license].sample) }
+    licensable { build(%i[base_license option_license].sample) }
   end
 end
 
