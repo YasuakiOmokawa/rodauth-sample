@@ -34,6 +34,26 @@ RSpec.describe License, type: :model do
           end
         end
       end
+
+      context 'option_license' do
+        let!(:licensable) { create(:option_license) }
+
+        context 'destroyされた場合' do
+          before { license.option_license.destroy! }
+
+          it 'licenseも消えること' do
+            expect(License.all).to be_empty
+          end
+        end
+
+        context 'licenseがdestroyされた場合' do
+          before { license.destroy! }
+
+          it '委譲先も消えること' do
+            expect(OptionLicense.all).to be_empty
+          end
+        end
+      end
     end
   end
 end
