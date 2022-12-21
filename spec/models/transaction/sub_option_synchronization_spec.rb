@@ -9,7 +9,8 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
     subject(:create!) { syncronization.create! }
 
     let(:client) { double('Client') }
-    let(:company) { create(:company) }
+    let(:license) { create(:license, licensable: build(:option_license)) }
+    let(:company) { license.subscription.company }
 
     context '連携したいオプションがある場合' do
       before do
