@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Transaction::SubOptionSynchronization, type: :model do
-  subject(:syncronization) { described_class.new(company, client) }
+  subject(:syncronization) { described_class.new(license, client) }
 
   describe '#create!' do
     subject(:create!) { syncronization.create! }
@@ -25,7 +25,7 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
 
       context '同期対象でない場合' do
         it 'オプションの情報が同期されない' do
-          expect { create! }.to_not change { company.reload.sub_options.size }
+          expect { create! }.to_not change { license.reload.option_licenses.size }
         end
       end
 
