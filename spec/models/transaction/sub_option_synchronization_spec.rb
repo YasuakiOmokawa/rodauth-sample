@@ -22,6 +22,7 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
         )
       end
 
+      # まずはここを通そう
       context '同期対象でない場合' do
         it 'オプションの情報が同期されない' do
           expect { create! }.to_not change { license.reload.subscription.licenses.size }
@@ -30,7 +31,7 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
 
       context '同期対象である場合' do
         it 'オプションの情報が同期される' do
-          expect { create! }.to change { company.reload.sub_options.size }
+          expect { create! }.to change { license.reload.subscription.licenses.size }
         end
       end
     end
