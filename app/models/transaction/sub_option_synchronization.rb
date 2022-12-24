@@ -11,7 +11,7 @@ module Transaction
 
     private
 
-    attr_reader :license, :client
+    attr_reader :subscription, :client
 
     delegate :licenses, to: :subscription, private: true
     delegate :option_license, to: :license, private: true
@@ -22,7 +22,7 @@ module Transaction
     end
 
     def update_and_destroy_option_license
-      lisenses.each do |_license|
+      licenses.each do |license|
         if (option = api_option_license.find { _1.license_type == option_license.license_type })
           option_license.assign_attributes(
             quantity: api_option_license.quantity
@@ -37,9 +37,12 @@ module Transaction
       license_types = licenses.map(&:option_license.license_type)
 
       api_option_license.reject { _1.license_type.in?(license_types) }.each do |api_option|
-        option_licenses.build(
-          quantity: api_option.quantity,
-          license_type: api_option.license_type
+        license.build(
+          next_payment_date: 1.year.from_now,
+          licensable: option_license.build(
+            quantity: api_option.quantity,
+            license_type: api_option.license_type
+          )
         )
       end
     end
