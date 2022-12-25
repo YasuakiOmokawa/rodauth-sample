@@ -16,13 +16,12 @@ RSpec.describe Transaction::SubOptionSynchronization, type: :model do
         option_class = Transaction::Option
         allow(client).to receive(:option_licenses).and_return(
           [
-            option_class.new(quantity: 1, option_type: 'api_client'),
-            option_class.new(quantity: 1, option_type: 'max_paper_upload_count')
+            option_class.new(quantity: 1, license_type: 'api_client'),
+            option_class.new(quantity: 1, license_type: 'max_paper_upload_count')
           ]
         )
       end
 
-      # まずはここを通そう
       context '同期対象でない場合' do
         it 'オプションの情報が同期されない' do
           expect { create! }.to_not change { license.reload.subscription.licenses.size }
