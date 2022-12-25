@@ -14,7 +14,6 @@ module Transaction
     attr_reader :subscription, :client
 
     delegate :licenses, to: :subscription, private: true
-    delegate :option_license, to: :license, private: true
 
     def normalize
       update_and_destroy_option_license
@@ -23,23 +22,25 @@ module Transaction
 
     def update_and_destroy_option_license
       licenses.each do |license|
-        if (option = api_option_license.find { _1.license_type == option_license.license_type })
-          option_license.assign_attributes(
-            quantity: api_option_license.quantity
+        if (option = api_options.find { _1.license_type == license.option_license.license_type })
+          license.option_license.assign_attributes(
+            quantity: option.quantity
           )
         else
-          option_license.mark_for_destruction
+          license.option_license.mark_for_destruction
         end
       end
     end
 
     def build_new_option_license
-      license_types = licenses.map(&:option_license.license_type)
+      license_types = licenses.map do |license|
+        license.option_license.license_type
+      end
 
-      api_option_license.reject { _1.license_type.in?(license_types) }.each do |api_option|
-        license.build(
+      api_options.reject { _1.license_type.in?(license_types) }.each do |api_option|
+        licenses.build(
           next_payment_date: 1.year.from_now,
-          licensable: option_license.build(
+          licensable: OptionLicense.new(
             quantity: api_option.quantity,
             license_type: api_option.license_type
           )
@@ -47,8 +48,8 @@ module Transaction
       end
     end
 
-    def api_option_license
-      @api_option_license = client.option_licenses
+    def api_options
+      @api_options = client.option_licenses
     end
   end
 end
