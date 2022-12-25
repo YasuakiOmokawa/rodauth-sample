@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Transaction
-  class SubOptionSynchronization < ApplicationModel
+  class OptionLicenseSynchronization < ApplicationModel
     def initialize(subscription, client)
       @subscription = subscription
       @client = client

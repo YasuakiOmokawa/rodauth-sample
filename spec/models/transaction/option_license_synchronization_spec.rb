@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Transaction::SubOptionSynchronization, type: :model do
+RSpec.describe Transaction::OptionLicenseSynchronization, type: :model do
   subject(:syncronization) { described_class.new(license.subscription, client) }
 
   describe '#create!' do
