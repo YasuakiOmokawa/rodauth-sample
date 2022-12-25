@@ -2,10 +2,10 @@
 
 module Transaction
   class Option
-    attr_reader :option_type, :quantity
+    attr_reader :license_type, :quantity
 
-    def initialize(option_type:, quantity:, **)
-      @option_type = option_type
+    def initialize(license_type:, quantity:, **)
+      @license_type = license_type
       @quantity = quantity
     end
   end
