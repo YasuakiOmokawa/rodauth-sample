@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module Composite
-  class MakeBatterTask < CompositeTask
+  class MakeCakeTask < CompositeTask
     def initialize
-      super('Make butter')
+      super('Make cake')
+      add_sub_task(MakeBatterTask.new)
       add_sub_task(MixTask.new)
     end
   end
