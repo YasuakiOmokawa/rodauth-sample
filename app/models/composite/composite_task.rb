@@ -10,6 +10,7 @@ module Composite
     def add_sub_task(task)
       @sub_tasks << task
     end
+    alias_method :<<, :add_sub_task
 
     def remove_sub_tasks(task)
       @sub_tasks.delete(task)
