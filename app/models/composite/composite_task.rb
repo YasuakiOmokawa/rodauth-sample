@@ -23,5 +23,9 @@ module Composite
       @sub_tasks.each { |task| time += task.get_time_required }
       time
     end
+
+    def total_number_of_basic_tasks
+      @sub_tasks.map(&:total_number_of_basic_tasks).sum
+    end
   end
 end
