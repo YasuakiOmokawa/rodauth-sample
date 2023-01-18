@@ -13,5 +13,9 @@ module Command
       f.write(@contents)
       f.close
     end
+
+    def unexecute
+      File.delete(@path)
+    end
   end
 end
