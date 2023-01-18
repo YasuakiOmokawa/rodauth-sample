@@ -14,6 +14,10 @@ module Command
       @commands.each(&:execute)
     end
 
+    def unexecute
+      @commands.reverse_each(&:unexecute)
+    end
+
     def description
       description = ''
       @commands.each { |command| description += "#{command.description}\n" }
