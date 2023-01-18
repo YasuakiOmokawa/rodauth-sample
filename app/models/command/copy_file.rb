@@ -11,5 +11,9 @@ module Command
     def execute
       FileUtils.cp_r(@source, @destination)
     end
+
+    def unexecute
+      FileUtils.rm_f(@destination)
+    end
   end
 end
