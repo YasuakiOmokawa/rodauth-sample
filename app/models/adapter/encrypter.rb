@@ -7,14 +7,15 @@ module Adapter
     end
 
     def encript(reader, writer)
-      reader.each_line do |line|
-        encrypted = string_encrypt(line, @key)
-        writer.print(encrypted)
+      until reader.eof?
+        encrypted = xor_csv(reader.readline, @key)
+        writer.puts(encrypted)
       end
     end
 
-    def string_encrypt(str, key)
-      str.chars.collect { |e| [e.unpack1('C') ^ (key.to_i & 0xFF)].pack('C') }.join
+    def xor_csv(str, key)
+      ords = key.chars.map(&:ord).cycle
+      str.chars.zip(ords).map { |c, o| c.ord ^ o }.join(',')
     end
   end
 end
