@@ -1,0 +1,639 @@
+inherit_from: .rubocop_todo.yml
+inherit_mode:
+  merge:
+    - Exclude
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rubycw
+  - rubocop-thread_safety
+
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+AllCops:
+  TargetRailsVersion: 7.0
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'db/schema.rb'
+    - '.irbrc'
+    - 'tools/**/*'
+  NewCops: disable
+  SuggestExtensions: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+# expect {}.to change {} を許容したいため
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*'
+
+# 条件分岐や例外処理の重複を避ける
+# Deviseは元コードがそういう実装なので除外
+Lint/DuplicateBranch:
+  Enabled: true
+  Exclude:
+    - 'app/models/concerns/devise_override.rb'
+
+# 空のblockを避ける
+Lint/EmptyBlock:
+  Enabled: true
+
+# super を呼んだ方が望ましいが NotImplementedError が実装されているケースがあるので無効に
+Lint/MissingSuper:
+  Enabled: false
+
+# 冗長な &. は避ける
+Lint/RedundantSafeNavigation:
+  Enabled: true
+
+# シンボルのキーにはシンボルを使う
+Lint/SymbolConversion:
+  Enabled: true
+
+Lint/UselessMethodDefinition:
+  Enabled: true
+
+# Assignment, Branch, Condition の数
+Metrics/AbcSize:
+  # TODO: Authy削除後にアンコメント
+  # Max: 46
+  Exclude:
+    - db/migrate/**/*.rb
+
+# DSL の性質上ブロックあたりの行数は増えるので監査対象から外す
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 219
+  Exclude:
+    - config/application.rb
+    - db/migrate/**/*.rb
+
+# 循環的複雑度
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/MethodLength:
+  Max: 31
+  Exclude:
+    - db/migrate/**/*.rb
+
+# メソッドのパラメータ数のカウント: キーワード引数を除外します
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+# メソッドの複雑さ
+Metrics/PerceivedComplexity:
+  Max: 13
+
+# Block 変数の命名を省略
+Naming/BlockForwarding:
+  Enabled: true
+
+Naming/InclusiveLanguage:
+  Enabled: false
+
+# has_ から始まるメソッドは許可する
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - 'is_'
+
+# 変数名に数値を含めない
+Naming/VariableNumber:
+  AllowedIdentifiers:
+    - max_contracts_50
+    - max_csv_export_count_900
+    - max_paper_upload_count_520
+    - max_paper_upload_count_1040
+  Exclude:
+    - 'spec/**/*.rb'
+
+# 正規表現パターン内が定数で構成される場合、oオプションを使い正規表現の再生成をしない
+Performance/ConstantRegexp:
+  Enabled: true
+
+Performance/MapCompact:
+  Enabled: true
+
+# 冗長なblock.callを避けてyieldを使う
+Performance/RedundantBlockCall:
+  Enabled: true
+
+Performance/RedundantStringChars:
+  Enabled: true
+
+Performance/StringInclude:
+  Enabled: true
+
+Performance/Sum:
+  Enabled: true
+
+# アクションの並び順を index, show, new, edit, create, update, destroy の順に
+# Rails/ActionOrder:
+Rails/ActionFilter:
+  Enabled: true
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+
+# Rails が提供するクラスにパッチをあてる場合は AS#on_load を使う
+# Rails/ActiveSupportOnLoad:
+Rails/ActiveSupportAliases:
+  Enabled: true
+
+# 同名メソッドを避けて delegate を使う
+Rails/Delegate:
+  Enabled: true
+  Exclude:
+    - 'lib/component_previews/teams/owner_documents/edit_form_component_preview.rb'
+
+# 積極的につかうことはないが自前で定義したメソッドで名前が干渉することがあるので
+Rails/DynamicFindBy:
+  Enabled: false
+
+# 環境変数の直接的な読み書きに関するCop
+Rails/EnvironmentVariableAccess:
+  Enabled: true
+  Exclude:
+    - 'lib/env.rb'
+
+Rails/ExpandedDateRange:
+  Enabled: true
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+Rails/FindById:
+  Enabled: true
+
+# I18n.locale= ではなく I18n.with_locale を推奨
+Rails/I18nLocaleAssignment:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+# コントローラに文言をベタ書きしないこと
+Rails/I18nLocaleTexts:
+  Exclude:
+    - 'app/controllers/documents/agreements/agrees_controller.rb'
+
+Rails/InverseOf:
+  IgnoreScopes: true
+
+# Controller で継承元のアクションに依存するフィルタを記述する際に冗長な空定義を書く必要が生じるので
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - config/initializers/action_controller_patch.rb
+
+Rails/Pluck:
+  Enabled: true
+
+Rails/RenderInline:
+  Enabled: true
+  Exclude:
+    - spec/**/*.rb
+
+# Pathname のメソッドを使う
+# Rails/RootPathnameMethods:
+Rails/DotSeparatedKeys:
+  Enabled: true
+
+Rails/ShortI18n:
+  Enabled: true
+  Exclude:
+    - config/initializers/action_controller_patch.rb
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'app/models/bulk_create_document/task.rb'
+    - 'lib/database_masking/**/*.rb'
+    - 'spec/**/*.rb'
+
+# -- が含まれる場合意図しないクエリになることがあるので無効に
+Rails/SquishedSQLHeredocs:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - staging
+
+# 一度 ignored_columns にエントリしてから DB 列を削除する手順を採る際、 DB 削除と ignored_columns 掃除を
+# 別に分けて段階的リリースができなくなるので無効化
+Rails/UnusedIgnoredColumns:
+  Enabled: false
+
+Rails/WhereExists:
+  Enabled: true
+
+Rails/WhereNot:
+  Enabled: true
+
+# allow_any_instance_of の使用可否
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/BeEq:
+  Enabled: true
+
+RSpec/BeNil:
+  Enabled: true
+
+# before/after all を使うか否か
+RSpec/BeforeAfterAll:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+# have_css('button[data-hoge]') の記述に対して have_button を要求するがその際に data 属性に対して指定が困難
+Capybara/SpecificMatcher:
+  Enabled: false
+
+# feature method の使用可否
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+
+# change by(0) ではなく not_to change を使用
+RSpec/ChangeByZero:
+  Enabled: true
+
+# context の開始を when, with, without で限定
+RSpec/ContextWording:
+  Enabled: false
+
+# 最初のdescribeにはクラス名を強制
+RSpec/DescribeClass:
+  Enabled: false
+
+# described_class のスタイルの強制
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/requests/public_api/**/*
+
+# テストケースの行数縛り
+RSpec/ExampleLength:
+  Enabled: false
+
+# テストケースのコメントの開始を動詞で縛る
+RSpec/ExampleWording:
+  Enabled: false
+
+# expect change のスタイルを縛る
+RSpec/ExpectChange:
+  Enabled: false
+
+# expect のHook内での使用を禁じる
+RSpec/ExpectInHook:
+  Enabled: false
+
+# subject expect is_expected の構造化のスタイルを強制
+RSpec/ImplicitSubject:
+  Enabled: false
+
+# subject は常に先頭に配置するよう強制
+RSpec/LeadingSubject:
+  Enabled: false
+
+# 参照していない let! を廃止
+RSpec/LetSetup:
+  Enabled: false
+
+# receive_message_chain の使用を禁止
+RSpec/MessageChain:
+  Enabled: false
+
+# message spy のスタイルを強制
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleDescribes:
+  Exclude:
+    - spec/requests/public_api/**/*
+
+# Example で利用可能なexpectの数
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# let の利用可能な数
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+# 名前付Subjectの使用可否
+RSpec/NamedSubject:
+  Enabled: false
+
+# ネストの深さの制御
+RSpec/NestedGroups:
+  Enabled: false
+
+# example 内に expect が必要かどうか
+#
+# メソッド抽出するケースがあるので無効に
+RSpec/NoExpectationExample:
+  Enabled: false
+
+# not_to or to_not を強制
+RSpec/NotToNot:
+  Enabled: false
+
+# 冗長なタイプ指定をしない
+RSpec/Rails/InferredSpecType:
+  Enabled: true
+
+# Stub の返り値のスタイルを強制
+RSpec/ReturnFromStub:
+  Enabled: false
+
+# Setup のコールバックをまとめる
+RSpec/ScatteredSetup:
+  Enabled: false
+
+# Stub をMockすることを強制
+RSpec/StubbedMock:
+  Enabled: false
+
+# メタデータの順序を制御する
+RSpec/SortMetadata:
+  Enabled: true
+
+# double の用法を強制
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+# double の参照を存在する定数に
+RSpec/VerifiedDoubleReference:
+  Enabled: false
+
+# Ruby 3.x 時代は _1 が使える
+# Synbol#to_proc より明らかに読みやすい
+Style/SymbolProc:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/application.rb'
+
+Style/CombinableLoops:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: compact
+
+Style/EvalWithLocation:
+  Enabled: false
+
+Style/ExplicitBlockArgument:
+  Enabled: true
+
+# 環境変数を参照する際は fetch を必須に
+Style/FetchEnvVar:
+  Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: 'percent'
+
+Style/FormatStringToken:
+  Exclude:
+    - config/routes.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashSyntax:
+  Enabled: true
+
+Style/HashConversion:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+# 後置If/Unlessは強制しない
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/NumericLiterals:
+  Enabled: false
+
+# OpenStruct を禁止しない
+Style/OpenStructUse:
+  Enabled: false
+
+# 冗長な引数を警告する
+Style/RedundantArgument:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/RedundantSelf:
+  Enabled: true
+
+Style/RedundantSelfAssignment:
+  Enabled: true
+
+# 冗長なエスケープを処する
+Style/RedundantStringEscape:
+  Enabled: true
+
+Style/ReturnNil:
+  Enabled: true
+
+Style/StringConcatenation:
+  Enabled: true
+
+# %i[] を強制しない
+Style/SymbolArray:
+  Enabled: false
+
+# 複数行の引数は末尾カンマ必要
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+# 複数行の配列は末尾カンマ必要
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+# ブロック引数は末尾カンマ必要
+Style/TrailingCommaInBlockArgs:
+  Enabled: true
+
+# 複数行のハッシュは末尾カンマ必要
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+# %w[] を強制しない
+Style/WordArray:
+  Enabled: false
+
+# Batch は ApplicationBatch を継承する
+CustomCops/ApplicationBatch:
+  Enabled: true
+  Exclude:
+    - 'lib/custom_cops/application_batch.rb'
+
+# Blueprint クラスは ApplicationBlueprint を継承する
+CustomCops/ApplicationBlueprint:
+  Enabled: true
+
+# Component は ApplicationComponent を継承する
+CustomCops/ApplicationComponent:
+  Enabled: true
+
+# Decorator は ApplicationDecorator を継承する
+CustomCops/ApplicationDecorator:
+  Enabled: true
+
+# Delivery は ApplicationDelivery を継承する
+CustomCops/ApplicationDelivery:
+  Enabled: true
+
+# FormObject は ApplicationForm を継承する
+CustomCops/ApplicationForm:
+  Enabled: true
+  Exclude:
+    - 'lib/custom_cops/application_form.rb'
+
+# MailerPreview クラスは ApplicationMailerPreview を継承する
+CustomCops/ApplicationMailerPreview:
+  Enabled: true
+
+# モック用のコンポーネントを組み込むのを避ける
+CustomCops/AvoidMocksComponent:
+  Enabled: true
+  Exclude:
+    - 'app/components/mocks/**/*'
+    - 'lib/component_previews/**/*'
+    - 'spec/components/mocks/**/*'
+
+# 保守性が下がるので shared_context の利用を避ける
+CustomCops/AvoidSharedContext:
+  Enabled: true
+  Exclude:
+    - 'spec/support/**/*'
+
+# StorageObjectBypass の使用を禁止する
+CustomCops/AvoidStorageObjectBypass:
+  Enabled: true
+  Exclude:
+    - 'app/jobs/documents/create_snapshot_job.rb'
+    - 'app/jobs/pdf_timestamp_verification_job.rb'
+    - 'app/models/document_repairation.rb'
+    - 'app/models/pdfsign/retry_document_approvals.rb'
+    - 'app/services/pdfsign/pdfsignable.rb'
+    - 'spec/**/*'
+
+# 保守性が下がるので shared_examples の利用を避ける
+CustomCops/AvoidSharedExamples:
+  Enabled: true
+
+# Spec での sleep の使用は避ける
+CustomCops/AvoidSleep:
+  Enabled: true
+  Include:
+    - 'spec/**/*.rb'
+
+# except ではなく only オプションの利用を推奨する
+CustomCops/AvoidExcept:
+  Enabled: true
+  Exclude:
+    - 'app/models/**/*.rb'
+
+# current_user.team の呼び出しを避ける
+CustomCops/AvoidUserTeam:
+  Enabled: true
+
+# tag メソッドの利用を推奨
+CustomCops/ContentTag:
+  Enabled: true
+
+# ninja_form_with を必須に（slimcop で利用しているので無効に）
+CustomCops/NinjaFormWith:
+  Enabled: false
+
+# 不正なオプションが設定されていないことを担保
+CustomCops/ResourceMethodOption:
+  Enabled: true
+
+# WHERE 句のない SQL はインシデントにつながるので警告する
+CustomCops/SafetySql:
+  Enabled: true
+  Exclude:
+    - 'spec/lib/custom_cops/safety_sql_spec.rb'
+    - 'db/migrate/20221003093857_backfill_item_options_position.rb'
+
+# サービスオブジェクトの新規作成は避ける
+CustomCops/ServiceObject:
+  Enabled: true
+
+# WebMock 無効化を防ぐ
+CustomCops/WebMock:
+  Enabled: true
+
+# Ruby 実行時の警告を無視する
+Rubycw/Rubycw:
+  Exclude:
+    - 'spec/**/*'
