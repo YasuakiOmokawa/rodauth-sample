@@ -352,7 +352,8 @@ RSpec/NestedGroups:
 # example 内に expect が必要かどうか
 #
 # メソッド抽出するケースがあるので無効に
-RSpec/NoExpectationExample:
+# RSpec/NoExpectationExample:
+RSpec/RepeatedExample:
   Enabled: false
 
 # not_to or to_not を強制
@@ -360,7 +361,8 @@ RSpec/NotToNot:
   Enabled: false
 
 # 冗長なタイプ指定をしない
-RSpec/Rails/InferredSpecType:
+# RSpec/Rails/InferredSpecType:
+RSpec/RepeatedDescription:
   Enabled: true
 
 # Stub の返り値のスタイルを強制
@@ -376,7 +378,8 @@ RSpec/StubbedMock:
   Enabled: false
 
 # メタデータの順序を制御する
-RSpec/SortMetadata:
+# RSpec/SortMetadata:
+RSpec/ScatteredLet:
   Enabled: true
 
 # double の用法を強制
@@ -493,7 +496,8 @@ Style/RedundantSelfAssignment:
   Enabled: true
 
 # 冗長なエスケープを処する
-Style/RedundantStringEscape:
+# Style/RedundantStringEscape:
+Style/RedundantRegexpEscape:
   Enabled: true
 
 Style/ReturnNil:
@@ -528,110 +532,6 @@ Style/WhileUntilModifier:
 # %w[] を強制しない
 Style/WordArray:
   Enabled: false
-
-# Batch は ApplicationBatch を継承する
-CustomCops/ApplicationBatch:
-  Enabled: true
-  Exclude:
-    - 'lib/custom_cops/application_batch.rb'
-
-# Blueprint クラスは ApplicationBlueprint を継承する
-CustomCops/ApplicationBlueprint:
-  Enabled: true
-
-# Component は ApplicationComponent を継承する
-CustomCops/ApplicationComponent:
-  Enabled: true
-
-# Decorator は ApplicationDecorator を継承する
-CustomCops/ApplicationDecorator:
-  Enabled: true
-
-# Delivery は ApplicationDelivery を継承する
-CustomCops/ApplicationDelivery:
-  Enabled: true
-
-# FormObject は ApplicationForm を継承する
-CustomCops/ApplicationForm:
-  Enabled: true
-  Exclude:
-    - 'lib/custom_cops/application_form.rb'
-
-# MailerPreview クラスは ApplicationMailerPreview を継承する
-CustomCops/ApplicationMailerPreview:
-  Enabled: true
-
-# モック用のコンポーネントを組み込むのを避ける
-CustomCops/AvoidMocksComponent:
-  Enabled: true
-  Exclude:
-    - 'app/components/mocks/**/*'
-    - 'lib/component_previews/**/*'
-    - 'spec/components/mocks/**/*'
-
-# 保守性が下がるので shared_context の利用を避ける
-CustomCops/AvoidSharedContext:
-  Enabled: true
-  Exclude:
-    - 'spec/support/**/*'
-
-# StorageObjectBypass の使用を禁止する
-CustomCops/AvoidStorageObjectBypass:
-  Enabled: true
-  Exclude:
-    - 'app/jobs/documents/create_snapshot_job.rb'
-    - 'app/jobs/pdf_timestamp_verification_job.rb'
-    - 'app/models/document_repairation.rb'
-    - 'app/models/pdfsign/retry_document_approvals.rb'
-    - 'app/services/pdfsign/pdfsignable.rb'
-    - 'spec/**/*'
-
-# 保守性が下がるので shared_examples の利用を避ける
-CustomCops/AvoidSharedExamples:
-  Enabled: true
-
-# Spec での sleep の使用は避ける
-CustomCops/AvoidSleep:
-  Enabled: true
-  Include:
-    - 'spec/**/*.rb'
-
-# except ではなく only オプションの利用を推奨する
-CustomCops/AvoidExcept:
-  Enabled: true
-  Exclude:
-    - 'app/models/**/*.rb'
-
-# current_user.team の呼び出しを避ける
-CustomCops/AvoidUserTeam:
-  Enabled: true
-
-# tag メソッドの利用を推奨
-CustomCops/ContentTag:
-  Enabled: true
-
-# ninja_form_with を必須に（slimcop で利用しているので無効に）
-CustomCops/NinjaFormWith:
-  Enabled: false
-
-# 不正なオプションが設定されていないことを担保
-CustomCops/ResourceMethodOption:
-  Enabled: true
-
-# WHERE 句のない SQL はインシデントにつながるので警告する
-CustomCops/SafetySql:
-  Enabled: true
-  Exclude:
-    - 'spec/lib/custom_cops/safety_sql_spec.rb'
-    - 'db/migrate/20221003093857_backfill_item_options_position.rb'
-
-# サービスオブジェクトの新規作成は避ける
-CustomCops/ServiceObject:
-  Enabled: true
-
-# WebMock 無効化を防ぐ
-CustomCops/WebMock:
-  Enabled: true
 
 # Ruby 実行時の警告を無視する
 Rubycw/Rubycw:

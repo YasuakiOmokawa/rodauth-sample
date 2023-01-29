@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-module Observer
-  ### A mock class to fetch a stock price (60 - 140).
-  class Price
-    def self.fetch(_symbol)
-      rand(60..139)
-    end
+### A mock class to fetch a stock price (60 - 140).
+class Observer::Price
+  def self.fetch(_symbol)
+    rand(60..139)
   end
 end
 

@@ -17,8 +17,8 @@ RSpec.describe Transaction::OptionLicenseSynchronization, type: :model do
         allow(client).to receive(:option_licenses).and_return(
           [
             option_class.new(quantity: 1, license_type: 'api_client'),
-            option_class.new(quantity: 1, license_type: 'max_paper_upload_count')
-          ]
+            option_class.new(quantity: 1, license_type: 'max_paper_upload_count'),
+          ],
         )
       end
 

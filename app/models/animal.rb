@@ -2,6 +2,6 @@
 
 class Animal
   def eat
-    puts '食べる'
+    Rails.logger.debug '食べる'
   end
 end

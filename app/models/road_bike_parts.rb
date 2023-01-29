@@ -7,7 +7,7 @@ class RoadBikeParts < Parts
 
   def local_spares
     {
-      tape_color:
+      tape_color:,
     }
   end
 

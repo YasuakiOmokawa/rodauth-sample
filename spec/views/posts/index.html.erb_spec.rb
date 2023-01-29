@@ -3,16 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe 'posts/index', type: :view do
-  before(:each) do
+  before do
     assign(:posts, [
              Post.create!(
                title: 'Title',
-               body: 'MyText'
+               body: 'MyText',
              ),
              Post.create!(
                title: 'Title',
-               body: 'MyText'
-             )
+               body: 'MyText',
+             ),
            ])
   end
 

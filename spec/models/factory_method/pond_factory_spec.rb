@@ -23,7 +23,7 @@ RSpec.describe FactoryMethod::PondFactory, type: :model do
           'duck 動物2 is eating now.',
           'duck 動物0 is sleeping now.',
           'duck 動物1 is sleeping now.',
-          'duck 動物2 is sleeping now.'
+          'duck 動物2 is sleeping now.',
         ]
       end
     end

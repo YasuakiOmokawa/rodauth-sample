@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-module StrategyPattern
-  class TextFormatter
-    def output_report(context)
-      puts("**#{context.title}**")
-      context.text.each do |line|
-        puts(line)
-      end
+class StrategyPattern::TextFormatter
+  def output_report(context)
+    Rails.logger.debug { "**#{context.title}**" }
+    context.text.each do |line|
+      Rails.logger.debug(line)
     end
   end
 end

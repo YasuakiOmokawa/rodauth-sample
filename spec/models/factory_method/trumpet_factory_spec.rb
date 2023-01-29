@@ -8,6 +8,7 @@ RSpec.describe FactoryMethod::TrumpetFactory, type: :model do
   describe '#ship_out' do
     context '1度出力するとアイテムの配列が空になる' do
       before { trumpet_factory.ship_out }
+
       specify do
         expect(trumpet_factory.ship_out).to eq []
       end
@@ -18,7 +19,7 @@ RSpec.describe FactoryMethod::TrumpetFactory, type: :model do
         expect(trumpet_factory.ship_out.map(&:play)).to eq [
           'trumpet: Instrument 0 is playing music.',
           'trumpet: Instrument 1 is playing music.',
-          'trumpet: Instrument 2 is playing music.'
+          'trumpet: Instrument 2 is playing music.',
         ]
       end
     end
