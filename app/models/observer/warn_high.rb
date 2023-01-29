@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-module Observer
-  class WarnHigh < Warner
-    # callback for observer
-    def update(time, price)
-      print "+++ #{time}: Price above #{@limit}: #{price}\n" if price > @limit
-    end
+class Observer::WarnHigh < Warner
+  # callback for observer
+  def update(time, price)
+    Rails.logger.debug { "+++ #{time}: Price above #{@limit}: #{price}\n" } if price > @limit
   end
 end
 

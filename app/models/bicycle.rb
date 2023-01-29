@@ -14,7 +14,5 @@ class Bicycle
     1
   end
 
-  def spares
-    parts.spares
-  end
+  delegate :spares, to: :parts
 end

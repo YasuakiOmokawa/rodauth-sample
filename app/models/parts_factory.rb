@@ -5,7 +5,7 @@ module PartsFactory
 
   def self.build(config, parts_class = Parts)
     parts_class.new(
-      config.collect { create_part(_1) }
+      config.collect { create_part(_1) },
     )
   end
 
@@ -16,7 +16,7 @@ module PartsFactory
     MyStruct.new(
       part_config[0],
       part_config[1],
-      part_config.fetch(2, true)
+      part_config.fetch(2, true),
     )
   end
 end

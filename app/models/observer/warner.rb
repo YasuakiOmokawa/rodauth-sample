@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-module Observer
-  ### An abstract observer of Ticker objects.
-  class Warner
-    def initialize(ticker, limit)
-      @limit = limit
-      ticker.add_observer(self)
-    end
+### An abstract observer of Ticker objects.
+class Observer::Warner
+  def initialize(ticker, limit)
+    @limit = limit
+    ticker.add_observer(self)
   end
 end
 

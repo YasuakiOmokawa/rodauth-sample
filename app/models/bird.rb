@@ -2,10 +2,10 @@
 
 class Bird < Animal
   def cry
-    puts '鳴く'
+    Rails.logger.debug '鳴く'
   end
 
   def fly
-    puts '飛ぶ'
+    Rails.logger.debug '飛ぶ'
   end
 end

@@ -2,6 +2,6 @@
 
 class Human < Animal
   def walk
-    puts '歩く'
+    Rails.logger.debug '歩く'
   end
 end

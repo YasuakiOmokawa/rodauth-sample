@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-module Command
-  class SaveCommand
-    def execute
-      puts 'exec this command after saving'
-    end
+class Command::SaveCommand
+  def execute
+    Rails.logger.debug 'exec this command after saving'
   end
 end

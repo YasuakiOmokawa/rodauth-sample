@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-module Adapter
-  class BritishTextObjectAdapter < TextObject
-    def initialize(bto)
-      @bto = bto
-    end
+class Adapter::BritishTextObjectAdapter < TextObject
+  def initialize(bto)
+    @bto = bto
+  end
 
-    def text
-      @bto.string
-    end
+  def text
+    @bto.string
+  end
 
-    def size_inches
-      @bto.size_mm / 25.4
-    end
+  def size_inches
+    @bto.size_mm / 25.4
+  end
 
-    def color
-      @bto.colour
-    end
+  def color
+    @bto.colour
   end
 end

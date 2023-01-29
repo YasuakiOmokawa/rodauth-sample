@@ -2,27 +2,25 @@
 
 require 'observer'
 
-module Observer
-  ### Periodically fetch a stock price.
-  class Ticker
-    include Observable
+### Periodically fetch a stock price.
+class Observer::Ticker
+  include Observable
 
-    def initialize(symbol)
-      @symbol = symbol
-    end
+  def initialize(symbol)
+    @symbol = symbol
+  end
 
-    def run
-      last_price = nil
-      loop do
-        price = Price.fetch(@symbol)
-        print "Current price: #{price}\n"
-        if price != last_price
-          changed # notify observers
-          last_price = price
-          notify_observers(Time.now, price)
-        end
-        sleep 1
+  def run
+    last_price = nil
+    loop do
+      price = Price.fetch(@symbol)
+      Rails.logger.debug { "Current price: #{price}\n" }
+      if price != last_price
+        changed # notify observers
+        last_price = price
+        notify_observers(Time.zone.now, price)
       end
+      sleep 1
     end
   end
 end

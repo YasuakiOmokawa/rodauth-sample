@@ -8,7 +8,7 @@ class MountainBikeParts < Parts
 
   def local_spares
     {
-      rear_shock:
+      rear_shock:,
     }
   end
 
