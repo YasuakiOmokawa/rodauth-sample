@@ -3,24 +3,14 @@
 require 'etc'
 
 class Proxy::AccountProtectionProxy
-  def initialize(real_object, owner_name)
-    @real_object = real_object
+  def initialize(real_account, owner_name)
+    @subject = real_account
     @owner_name = owner_name
   end
 
-  def balance
+  def method_missing(name, *args)
     check_access
-    @real_object.balance
-  end
-
-  def deposit(amount)
-    check_access
-    @real_object.deposit(amount)
-  end
-
-  def withdraw(amount)
-    check_access
-    @real_object.withdraw(amount)
+    @subject.send(name, *args)
   end
 
   def check_access
