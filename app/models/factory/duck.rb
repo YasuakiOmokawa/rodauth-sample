@@ -14,6 +14,6 @@ class Factory::Duck
   end
 
   def sleep
-    pust "duck #{@name} is sleeping quietly."
+    Rails.logger.debug { "duck #{@name} is sleeping quietly." }
   end
 end
