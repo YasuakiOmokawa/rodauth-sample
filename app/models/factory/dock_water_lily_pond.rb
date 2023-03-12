@@ -2,9 +2,10 @@
 
 class Factory::DuckWaterLilyPond < Factory::Pond
   def new_organism(type, name)
-    if type == :animal
+    case type
+    when :animal
       ::Factory::Duck.new(name)
-    elsif type == :plant
+    when :plant
       ::Factory::WaterLily.new(name)
     else
       raise "Unknown type #{type}"
