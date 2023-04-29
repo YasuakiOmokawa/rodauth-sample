@@ -7,6 +7,9 @@ class TimeFilter
   end
 
   def to_proc
+    start = self.start
+    finish = self.finish
+
     proc do |time|
       next false if start && time < start
       next false if finish && time > finish
