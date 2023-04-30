@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TimeFilter
-  def initialize(start, finish)
+  def initialize(start: nil, finish: nil)
     @start = start
     @finish = finish
   end
