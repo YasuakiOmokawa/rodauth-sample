@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TimeFilter
-  def initialize(start, finish)
+  def initialize(start: nil, finish: nil)
     @start = start
     @finish = finish
   end
@@ -10,11 +10,14 @@ class TimeFilter
     start = self.start
     finish = self.finish
 
-    proc do |time|
-      next false if start && time < start
-      next false if finish && time > finish
-
-      true
+    if start && finish
+      proc { |time| time >= start && time <= finish }
+    elsif start
+      proc { |time| time >= start }
+    elsif finish
+      proc { |time| time <= finish }
+    else
+      proc { true }
     end
   end
 
