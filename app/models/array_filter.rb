@@ -5,9 +5,9 @@ class ArrayFilter
     @array = array
   end
 
-  def reject_half_of(max)
-    max = max.to_f
-    array.reject { |element| element / 2.0 >= max }
+  def reject_double_of(max)
+    max = max.to_f * 2
+    array.reject { |element| element >= max }
   end
 
   private
