@@ -10,6 +10,15 @@ class ArrayFilter
     array.reject { |element| element >= max }
   end
 
+  def generate_hash(value)
+    hash = value.to_hash
+    a_value = hash[:a]
+    array.each do |element|
+      hash[element] = true unless a_value
+    end
+    hash
+  end
+
   private
 
   attr_reader :array
